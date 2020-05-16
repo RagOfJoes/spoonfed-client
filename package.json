@@ -1,0 +1,42 @@
+{
+	"name": "next-material-dark-mode",
+	"version": "1.0.0",
+	"description": "Boilerplate code for NextJS w/ Material UI library that supports Dark Mode Toggle.",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "NODE_ENV=production && next start",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/RagOfJoes/next-material-dark-mode.git"
+	},
+	"keywords": [
+		"next",
+		"nextjs",
+		"material",
+		"material-design",
+		"dark-mode"
+	],
+	"author": "Victor Ragojos",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/RagOfJoes/next-material-dark-mode/issues"
+	},
+	"homepage": "https://github.com/RagOfJoes/next-material-dark-mode#readme",
+	"dependencies": {
+		"@material-ui/core": "^4.9.14",
+		"@material-ui/icons": "^4.9.1",
+		"cookie": "^0.4.1",
+		"js-cookie": "^2.2.1",
+		"moment": "^2.25.3",
+		"next": "^9.4.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	},
+	"devDependencies": {
+		"dotenv": "^8.2.0"
+	}
+}
