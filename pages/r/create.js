@@ -1,21 +1,22 @@
 import Head from 'next/head';
 import { withApollo } from 'lib/withApollo';
 import Header from 'Components/Header/Header';
-import Welcome from 'page-containers/Welcome';
-import { UserProvider, useFetchUser } from 'lib/user';
 import MeProvider from 'lib/Providers/MeProvider';
+import { UserProvider, useFetchUser } from 'lib/user';
+import CreateRecipe from 'page-containers/CreateRecipe';
 
 const Index = () => {
 	const { user, loading } = useFetchUser();
+
 	return (
 		<UserProvider value={{ user, loading }}>
 			<MeProvider>
 				<Head>
-					<title>Welcome | Spoonfed</title>
+					<title>Create a Recipe | Spoonfed</title>
 				</Head>
 
 				<Header />
-				<Welcome />
+				<CreateRecipe />
 			</MeProvider>
 		</UserProvider>
 	);

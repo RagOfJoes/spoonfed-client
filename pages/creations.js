@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { withApollo } from 'lib/withApollo';
 import Header from 'Components/Header/Header';
-import Welcome from 'page-containers/Welcome';
-import { UserProvider, useFetchUser } from 'lib/user';
 import MeProvider from 'lib/Providers/MeProvider';
+import Creations from 'page-containers/Creations';
+import { UserProvider, useFetchUser } from 'lib/user';
 
 const Index = () => {
 	const { user, loading } = useFetchUser();
@@ -11,11 +11,12 @@ const Index = () => {
 		<UserProvider value={{ user, loading }}>
 			<MeProvider>
 				<Head>
-					<title>Welcome | Spoonfed</title>
+					<title>Creations | Spoonfed</title>
+					<meta name="description" content="Creations" />
 				</Head>
 
 				<Header />
-				<Welcome />
+				<Creations />
 			</MeProvider>
 		</UserProvider>
 	);

@@ -1,10 +1,31 @@
 import cookie from 'js-cookie';
 import { parse } from 'cookie';
-import React, { useEffect } from 'react';
+import Router from 'next/router';
+import NProgress from 'nprogress';
+import 'public/stylesheets/reset.css';
+import { SnackbarProvider } from 'notistack';
+import 'react-image-crop/dist/ReactCrop.css';
+import React, { useEffect, memo } from 'react';
+import '@brainhubeu/react-carousel/lib/style.css';
+import AppProvider from 'lib/Providers/AppProvider';
 import ThemeProvider from 'lib/Providers/ThemeProvider';
 
-const App = ({ Component, theme, pageProps }) => {
+const App = memo(({ Component, theme, pageProps }) => {
 	useEffect(() => {
+		NProgress.configure({
+			showSpinner: false,
+		});
+
+		Router.events.on('routeChangeStart', (url) => {
+			NProgress.start();
+		});
+		Router.events.on('routeChangeComplete', (url) => {
+			NProgress.done();
+		});
+		Router.events.on('routeChangeError', (err, url) => {
+			NProgress.done();
+		});
+
 		const jssStyles = document.querySelector('#jss-server-side');
 		if (jssStyles) {
 			jssStyles.parentNode.removeChild(jssStyles);
@@ -13,10 +34,14 @@ const App = ({ Component, theme, pageProps }) => {
 
 	return (
 		<ThemeProvider initialTheme={theme}>
-			<Component {...pageProps} />
+			<SnackbarProvider preventDuplicate>
+				<AppProvider>
+					<Component {...pageProps} />
+				</AppProvider>
+			</SnackbarProvider>
 		</ThemeProvider>
 	);
-};
+});
 
 App.getInitialProps = async ({ Component, ctx }) => {
 	let pageProps = {};
