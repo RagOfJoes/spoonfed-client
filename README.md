@@ -1,4 +1,4 @@
-# Weekend Project(5/16/2020 - 5/17/2020) - Spoonfed Application
+# Spoonfed
 
 ## Main highlights
 
