@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
 					<meta property="og:type" content="website" />
 					<meta property="og:site_name" content="Spoonfed" />
 					<meta property="og:url" content="https://spoonfed.dev" />
-					<meta property="og:image" content="/images/favicon-64" />
+					<meta property="og:image" content="/images/favicon-64.png" />
 
 					<meta
 						name="og:description"

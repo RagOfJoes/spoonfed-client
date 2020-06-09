@@ -35,6 +35,7 @@ export default memo(() => {
 				<Head>
 					<title>
 						{profile.data?.name?.full} ({profile.data?.username}) | Spoonfed
+						<meta property="og:image" content={profile.data?.avatar || '/images/favicon-64.png'} />
 					</title>
 				</Head>
 				<Layout>
