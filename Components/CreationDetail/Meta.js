@@ -91,7 +91,7 @@ export default memo(({ title, avatar, isLiked, onLike, description, username, na
 							color="default"
 							label={username}
 							avatar={
-								<Avatar src={avatar} alt="Avatar">
+								<Avatar alt={username} title={username} src={avatar} alt="Avatar">
 									{full[0]}
 								</Avatar>
 							}

@@ -54,8 +54,8 @@ export default memo(({ title, images, disableDots, carouselProps }) => {
 							placeholder={<Skeleton variant="rect" width="100%" height="40vw" style={{ maxHeight: 800 }} />}
 						>
 							<CardMedia
-								alt={i.name}
 								image={i.url}
+								alt={title || i.name}
 								title={title || i.name}
 								className={classes.image}
 								classes={{ root: classes.imageRoot }}

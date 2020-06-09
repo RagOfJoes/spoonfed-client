@@ -53,7 +53,9 @@ export default memo(() => {
 
 	return (
 		<Layout>
-			<ProfileLoading />
+			<Grid container direction="row" justify="center" className={classes.container}>
+				<ProfileLoading />
+			</Grid>
 		</Layout>
 	);
 });

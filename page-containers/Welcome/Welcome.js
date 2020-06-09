@@ -101,9 +101,9 @@ export default () => {
 
 					<Grid item className={classes.imageContainer}>
 						{theme === 'light' ? (
-							<img className={classes.image} src="images/Light-HomeImage.svg" />
+							<img alt="Welcome" className={classes.image} src="images/Light-HomeImage.svg" />
 						) : (
-							<img className={classes.image} src="images/Dark-HomeImage.svg" />
+							<img alt="Welcome" className={classes.image} src="images/Dark-HomeImage.svg" />
 						)}
 					</Grid>
 				</Grid>

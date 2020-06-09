@@ -76,7 +76,7 @@ export default memo(({}) => {
 
 					<Grid item container spacing={2} wrap="nowrap" alignItems="center">
 						<Grid item>
-							<Avatar className={classes.avatar} src={getAvatarSrc(avatar)}>
+							<Avatar alt="Avatar" src={getAvatarSrc(avatar)} className={classes.avatar}>
 								<Typography variant="h6">{user.given_name[0]}</Typography>
 							</Avatar>
 						</Grid>

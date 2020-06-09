@@ -11,15 +11,28 @@ export default class MyDocument extends Document {
 					<meta name="theme-color" content="#424242" />
 					<meta property="og:type" content="website" />
 					<meta property="og:site_name" content="Spoonfed" />
+					<meta property="og:url" content="https://spoonfed.dev" />
+					<meta property="og:image" content="/images/favicon-64" />
+
+					<meta
+						name="og:description"
+						content="Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others."
+					/>
 					<meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+					<meta name="author" content="Victor Ragojos - https://github.com/RagOfJoes" />
 					<meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
 					<meta
 						name="description"
 						content="Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others."
 					/>
-
 					<link rel="shortcut icon" href="/images/favicon.ico" />
+					<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180.png" />
+					<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
+					<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+					<link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64.png" />
+
 					<link rel="stylesheet" type="text/css" href="/stylesheets/nprogress.css" />
+					<link rel="manifest" href="/manifest.json" crossOrigin="use-credentials" />
 					<link
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Roboto:wght@300;400;500&display=swap"

@@ -45,13 +45,8 @@ export default memo(
 			<Card elevation={0} className={`${classes.container} ${shadow.root}`}>
 				<Link shallow scroll={false} href={href || `/?recipeSlug=${slug}`} as={as || `/r/${slug}`}>
 					<CardActionArea className={classes.imageBtn}>
-						<LazyLoad
-							once
-							debounce
-							height={250}
-							placeholder={<Skeleton variant="rect" width="100%" height={250} />}
-						>
-							<CardMedia image={images[0].url} className={classes.image} />
+						<LazyLoad once debounce height={250} placeholder={<Skeleton variant="rect" width="100%" height={250} />}>
+							<CardMedia alt={name} title={name} image={images[0].url} className={classes.image} />
 						</LazyLoad>
 					</CardActionArea>
 				</Link>
@@ -80,7 +75,7 @@ export default memo(
 									color="default"
 									label={username}
 									avatar={
-										<Avatar src={avatar} alt="Avatar">
+										<Avatar alt={username} title={username} src={avatar} alt="Avatar">
 											{full[0]}
 										</Avatar>
 									}
