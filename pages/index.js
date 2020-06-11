@@ -12,6 +12,7 @@ const Index = () => {
 			<MeProvider>
 				<Head>
 					<title>Welcome | Spoonfed</title>
+					<meta key="title" property="og:title" content="Welcome" />
 				</Head>
 
 				<Header />

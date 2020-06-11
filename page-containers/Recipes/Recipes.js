@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { memo } from 'react';
 import Layout from 'Components/Layout';
 import RecipeCards from './RecipeCards';
@@ -27,6 +28,12 @@ export default memo(() => {
 	if (data) {
 		return (
 			<Layout>
+				<Head>
+					<title>Recipes | Spoonfed</title>
+					<meta key="title" property="og:title" content="Recipes" />
+					<meta name="description" content="Find the perfect recipe today!" />
+					<meta key="description" name="og:description" content="Find the perfect recipe today!" />
+				</Head>
 				<Grid container spacing={1} direction="row" className={classes.container}>
 					<CallToAction />
 

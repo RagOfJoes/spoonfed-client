@@ -9,13 +9,14 @@ import { useRecipeFormStyle } from './RecipeForm.style';
 
 export default () => {
 	const classes = useRecipeFormStyle();
-	const { errors, setFieldTouched } = useFormikContext();
+	const { errors, touched, setFieldTouched } = useFormikContext();
 
 	useEffect(() => {
 		try {
-			if (errors.time) setFieldTouched('time.total', true);
+			console.log(errors, touched);
+			if (errors.time && touched.time && !touched.time.total) setFieldTouched('time.total', true, false);
 		} catch (e) {}
-	}, [errors]);
+	}, [errors, touched]);
 
 	return (
 		<>

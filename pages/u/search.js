@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Search from 'page-containers/Search';
 import { withApollo } from 'lib/withApollo';
 import Header from 'Components/Header/Header';
@@ -10,10 +9,6 @@ const Index = () => {
 	return (
 		<UserProvider value={{ user, loading }}>
 			<MeProvider>
-				<Head>
-					<title>Search | Spoonfed</title>
-				</Head>
-
 				<Header />
 				<Search />
 			</MeProvider>

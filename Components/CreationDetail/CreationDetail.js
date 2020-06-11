@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { useQuery } from '@apollo/react-hooks';
 import Typography from '@material-ui/core/Typography';
 import { GetCreationDetailQuery } from 'graphql/Queries';
+import CreationDetailError from './CreationDetail.error';
 import CreationDetailLoading from './CreationDetail.loading';
 import CreationDetailContent from './CreationDetail.content';
 import makeStyles from '@material-ui/core/styles/makeStyles';
@@ -48,7 +49,7 @@ export default memo(({ onLike, onError }) => {
 
 	if (!loading && data?.getCreationDetail) return <CreationDetailContent {...data?.getCreationDetail} onLike={onLike} />;
 
-	if (!loading && !error && router?.query?.creationSlug && !data?.getCreationDetail) return <h1>Error</h1>;
+	if (!loading && !error && router?.query?.creationSlug && !data?.getCreationDetail) return <CreationDetailError />;
 
 	if (loading) return <CreationDetailLoading />;
 

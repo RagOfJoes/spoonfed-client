@@ -18,7 +18,7 @@ export const init = {
 };
 
 export const timeRegExp = new RegExp(
-	/^[0-9][0-9]{0,1}[ ]?(?:(h|hr|hour|hours)[ ]?(\band\b)?[ ]?([0-9][0-9]{0,1}[ ]?(m|min|mins|minute|minutes))?|m|min|mins|minute|minutes)$/,
+	/^[0-9][0-9]{0,1}[ ]?(?:(h|hr|hrs|hour|hours)[ ]?(\band\b)?[ ]?([0-9][0-9]{0,1}[ ]?(m|min|mins|minute|minutes))?|m|min|mins|minute|minutes)$/,
 	'i'
 );
 

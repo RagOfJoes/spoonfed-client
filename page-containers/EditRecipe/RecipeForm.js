@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useUser } from 'lib/user';
 import { useSnackbar } from 'notistack';
 import Grid from '@material-ui/core/Grid';
@@ -32,49 +33,55 @@ export default () => {
 	const [editRecipe] = useEditRecipe(enqueueSnackbar);
 
 	if (!error && !loading && data?.getRecipeDetail) {
-		const { id, createdBy } = data.getRecipeDetail;
+		const { id, name, createdBy } = data.getRecipeDetail;
 
 		// If User didn't create this Recipe
 		if (user?.sub !== createdBy?.sub) return <NotAuthorized />;
 
 		return (
-			<Grid container direction="column" className={classes.container}>
-				<RecipeForm
-					initialValues={data.getRecipeDetail}
-					Header={
-						<Grid item container alignItems="center">
-							<Grid item>
-								<Typography variant="h5">Edit recipe</Typography>
+			<>
+				<Head>
+					<title>Edit {name || 'Recipe'}</title>
+					<meta key="title" property="og:title" content={`Edit ${name || Recipe}`} />
+				</Head>
+				<Grid container direction="column" className={classes.container}>
+					<RecipeForm
+						initialValues={data.getRecipeDetail}
+						Header={
+							<Grid item container alignItems="center">
+								<Grid item>
+									<Typography variant="h5">Edit recipe</Typography>
+								</Grid>
 							</Grid>
-						</Grid>
-					}
-					onError={async (e) => {
-						if (isAuthError(e)) {
-							await handleAuthError(e, null, enqueueSnackbar);
-							return;
 						}
+						onError={async (e) => {
+							if (isAuthError(e)) {
+								await handleAuthError(e, null, enqueueSnackbar);
+								return;
+							}
 
-						enqueueSnackbar('Something went wrong while editing Recipe. Try again later.', {
-							variant: 'error',
-						});
-					}}
-					mutation={async (v) => {
-						const allowedFields = ['name', 'servings', 'time', 'ingredients', 'instructions', 'images'];
-						const { recipe } = v.variables;
+							enqueueSnackbar('Something went wrong while editing Recipe. Try again later.', {
+								variant: 'error',
+							});
+						}}
+						mutation={async (v) => {
+							const allowedFields = ['name', 'servings', 'time', 'ingredients', 'instructions', 'images'];
+							const { recipe } = v.variables;
 
-						const inputVar = {};
-						allowedFields.map((field) => (inputVar[field] = recipe[field]));
-						if (inputVar.time) delete inputVar.time;
+							const inputVar = {};
+							allowedFields.map((field) => (inputVar[field] = recipe[field]));
+							if (inputVar.time) delete inputVar.time;
 
-						await editRecipe({
-							variables: {
-								id,
-								recipe: inputVar,
-							},
-						});
-					}}
-				/>
-			</Grid>
+							await editRecipe({
+								variables: {
+									id,
+									recipe: inputVar,
+								},
+							});
+						}}
+					/>
+				</Grid>
+			</>
 		);
 	}
 

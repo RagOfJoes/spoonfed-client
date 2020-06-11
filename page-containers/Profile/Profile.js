@@ -31,24 +31,23 @@ export default memo(() => {
 
 	if (!profile.loading && profile.data && (!recipes.loading || !creations.loading)) {
 		return (
-			<>
+			<Layout>
 				<Head>
 					<title>
 						{profile.data?.name?.full} ({profile.data?.username}) | Spoonfed
 					</title>
+					<meta key="title" property="og:title" content={`${profile.data?.username}'s Profile`} />
 					<meta key="image" property="og:image" content={profile.data?.avatar || '/images/favicon-64.png'} />
 				</Head>
-				<Layout>
-					<Grid container direction="row" justify="center" className={classes.container}>
-						<User />
-						<Tabs />
-						{router.route === '/u/[username]' && <Recipes />}
-						{router.route === '/u/[username]/creations' && <Creations />}
-					</Grid>
-					<RecipeDetail />
-					<CreationDetail />
-				</Layout>
-			</>
+				<Grid container direction="row" justify="center" className={classes.container}>
+					<User />
+					<Tabs />
+					{router.route === '/u/[username]' && <Recipes />}
+					{router.route === '/u/[username]/creations' && <Creations />}
+				</Grid>
+				<RecipeDetail />
+				<CreationDetail />
+			</Layout>
 		);
 	}
 

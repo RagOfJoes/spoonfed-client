@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useUser } from 'lib/user';
 import { useSnackbar } from 'notistack';
 import Grid from '@material-ui/core/Grid';
@@ -32,7 +33,7 @@ export default () => {
 	const [editCreation] = useEditCreation(enqueueSnackbar);
 
 	if (!error && !loading && data?.getCreationDetail) {
-		const { id, recipe, createdBy } = data.getCreationDetail;
+		const { id, title, recipe, createdBy } = data.getCreationDetail;
 
 		// If User didn't create this Recipe
 		if (user?.sub !== createdBy?.sub) return <NotAuthorized />;
@@ -40,42 +41,48 @@ export default () => {
 		const recipeUrl = new URL(`/r/${recipe.slug}`, document.baseURI).href;
 
 		return (
-			<Grid container direction="column" className={classes.container}>
-				<CreationsForm
-					initialValues={{ ...data.getCreationDetail, recipe: recipeUrl }}
-					Header={
-						<Grid item container alignItems="center">
-							<Grid item>
-								<Typography variant="h5">Edit Creation</Typography>
+			<>
+				<Head>
+					<title>Edit {title || 'Creation'}</title>
+					<meta key="title" property="og:title" content={`Edit ${title || 'Creation'}`} />
+				</Head>
+				<Grid container direction="column" className={classes.container}>
+					<CreationsForm
+						initialValues={{ ...data.getCreationDetail, recipe: recipeUrl }}
+						Header={
+							<Grid item container alignItems="center">
+								<Grid item>
+									<Typography variant="h5">Edit Creation</Typography>
+								</Grid>
 							</Grid>
-						</Grid>
-					}
-					onError={async (e) => {
-						if (isAuthError(e)) {
-							await handleAuthError(e, null, enqueueSnackbar);
-							return;
 						}
+						onError={async (e) => {
+							if (isAuthError(e)) {
+								await handleAuthError(e, null, enqueueSnackbar);
+								return;
+							}
 
-						enqueueSnackbar('Something went wrong while editing Recipe. Try again later.', {
-							variant: 'error',
-						});
-					}}
-					mutation={async (v) => {
-						const allowedFields = ['title', 'description', 'images'];
-						const { creation } = v.variables;
+							enqueueSnackbar('Something went wrong while editing Recipe. Try again later.', {
+								variant: 'error',
+							});
+						}}
+						mutation={async (v) => {
+							const allowedFields = ['title', 'description', 'images'];
+							const { creation } = v.variables;
 
-						const inputVar = {};
-						allowedFields.map((field) => (inputVar[field] = creation[field]));
+							const inputVar = {};
+							allowedFields.map((field) => (inputVar[field] = creation[field]));
 
-						await editCreation({
-							variables: {
-								id,
-								creation: inputVar,
-							},
-						});
-					}}
-				/>
-			</Grid>
+							await editCreation({
+								variables: {
+									id,
+									creation: inputVar,
+								},
+							});
+						}}
+					/>
+				</Grid>
+			</>
 		);
 	}
 
