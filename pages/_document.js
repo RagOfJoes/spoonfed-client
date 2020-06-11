@@ -12,14 +12,14 @@ export default class MyDocument extends Document {
 					<meta property="og:type" content="website" />
 					<meta property="og:site_name" content="Spoonfed" />
 					<meta property="og:url" content="https://spoonfed.dev" />
-					<meta property="og:image" content="/images/favicon-64.png" />
-
+					<meta key="image" property="og:image" content="/images/favicon-64.png" />
 					<meta
 						name="og:description"
 						content="Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others."
 					/>
 					<meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
 					<meta name="author" content="Victor Ragojos - https://github.com/RagOfJoes" />
+					<meta name="keywords" content="Spoonfed, NextJS, Recipe, GraphQL, Food, Creation, Social" />
 					<meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
 					<meta
 						name="description"

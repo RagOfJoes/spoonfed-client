@@ -29,14 +29,14 @@ export default memo(() => {
 	const classes = useStyles();
 	const { profile, recipes, creations } = useProfile();
 
-	if (!profile.loading && (!recipes.loading || !creations.loading)) {
+	if (!profile.loading && profile.data && (!recipes.loading || !creations.loading)) {
 		return (
 			<>
 				<Head>
 					<title>
 						{profile.data?.name?.full} ({profile.data?.username}) | Spoonfed
-						<meta property="og:image" content={profile.data?.avatar || '/images/favicon-64.png'} />
 					</title>
+					<meta key="image" property="og:image" content={profile.data?.avatar || '/images/favicon-64.png'} />
 				</Head>
 				<Layout>
 					<Grid container direction="row" justify="center" className={classes.container}>

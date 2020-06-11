@@ -12,7 +12,8 @@ const Index = () => {
 			<MeProvider>
 				<Head>
 					<title>Creations | Spoonfed</title>
-					<meta name="description" content="Creations" />
+					<meta name="description" content="Find the perfect inspiration for your next Creation!" />
+					<meta name="og:description" content="Find the perfect inspiration for your next Creation!" />
 				</Head>
 
 				<Header />

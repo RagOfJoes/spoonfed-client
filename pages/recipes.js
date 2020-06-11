@@ -12,7 +12,8 @@ const Index = () => {
 			<MeProvider>
 				<Head>
 					<title>Recipes | Spoonfed</title>
-					<meta name="description" content="Recipes" />
+					<meta name="description" content="Find the perfect recipe today by browsing other user's Recipes!" />
+					<meta name="og:description" content="Find the perfect recipe today by browsing other user's Recipes!" />
 				</Head>
 
 				<Header />
