@@ -54,6 +54,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 			initialValues={initialValues}
 			onSubmit={async (values, actions) => {
 				if (!isMounted) return;
+				actions.setSubmitting(true);
 
 				try {
 					if (typeof onSubmitting === 'function') await onSubmitting();
@@ -88,7 +89,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 				actions.setSubmitting(false);
 			}}
 		>
-			{({}) => (
+			{({ isSubmitting }) => (
 				<Grid container wrap="nowrap" spacing={3} direction="column" className={classes.content}>
 					{Header}
 
@@ -142,7 +143,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 						</Grid>
 
 						<Grid item xs={12}>
-							<Button size="large" color="primary" type="submit" variant="contained">
+							<Button size="large" color="primary" type="submit" variant="contained" disabled={isSubmitting}>
 								Submit
 							</Button>
 						</Grid>
