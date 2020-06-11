@@ -84,7 +84,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 				actions.setSubmitting(false);
 			}}
 		>
-			{({ values, errors }) => (
+			{({ values, errors, touched }) => (
 				<Grid container wrap="nowrap" spacing={3} direction="column" className={classes.content}>
 					{Header}
 
@@ -109,9 +109,23 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 								{errors && Object.keys(errors).length > 0 && (
 									<Grid item>
 										<Box padding={1.5} bgcolor="error.main" borderRadius={4}>
-											<Typography variant="subtitle2">
-												Please check your inputs to view specific errors
+											<Typography variant="subtitle1">
+												Please check these inputs for specific errors:
 											</Typography>
+											{Object.keys(errors).map((e) => {
+												if (touched[e])
+													return (
+														<Typography
+															key={e}
+															variant="subtitle2"
+															style={{ textTransform: 'capitalize' }}
+														>
+															- {e}
+														</Typography>
+													);
+
+												return null;
+											})}
 										</Box>
 									</Grid>
 								)}

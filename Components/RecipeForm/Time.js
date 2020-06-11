@@ -1,13 +1,21 @@
-import { Field } from 'formik';
+import { useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { RECIPE_TIME } from 'constants/index';
 import TextFormField from 'views/TextFormField';
 import Divider from '@material-ui/core/Divider';
+import { Field, useFormikContext } from 'formik';
 import Typography from '@material-ui/core/Typography';
 import { useRecipeFormStyle } from './RecipeForm.style';
 
-export default ({ time }) => {
+export default () => {
 	const classes = useRecipeFormStyle();
+	const { errors, setFieldTouched } = useFormikContext();
+
+	useEffect(() => {
+		try {
+			if (errors.time) setFieldTouched('time.total', true);
+		} catch (e) {}
+	}, [errors]);
 
 	return (
 		<>
