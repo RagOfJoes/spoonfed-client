@@ -8,6 +8,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { handleAuthError } from 'graphql/handlers';
 import CreationsLoading from './Creations.loading';
 import { UNAUTHENTICATED_MSG } from 'constants/index';
+import Typography from '@material-ui/core/Typography';
 import { useProfile } from 'lib/Providers/ProfileProvider';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { LikeCreationMutation, UnlikeCreationMutation } from 'graphql/Mutations';
@@ -17,6 +18,10 @@ const useStyles = makeStyles(
 		container: {
 			width: '100%',
 			marginTop: spacing(2),
+		},
+		image: {
+			width: '100%',
+			maxWidth: 500,
 		},
 	}),
 	{ name: 'ProfileCreations' }
@@ -41,7 +46,8 @@ export default memo(() => {
 		},
 	});
 
-	if (!loading && data) {
+	if (!loading && data && data?.edges.length > 0) {
+		const { edges } = data;
 		return (
 			<Grid container spacing={2} direction="row" className={classes.container}>
 				{data?.edges.map((creation) => {
@@ -96,6 +102,28 @@ export default memo(() => {
 				})}
 
 				<Waypoint />
+			</Grid>
+		);
+	}
+
+	if (!loading && data && data?.edges.length === 0) {
+		return (
+			<Grid
+				item
+				container
+				spacing={3}
+				justify="center"
+				direction="column"
+				alignItems="center"
+				className={classes.container}
+			>
+				<Grid item>
+					<Typography variant="h6">No Creations yet!</Typography>
+				</Grid>
+
+				<Grid item container justify="center">
+					<img alt="Invalid Recipe" title="Invalid Recipe" src="/images/NoData.svg" className={classes.image} />
+				</Grid>
 			</Grid>
 		);
 	}

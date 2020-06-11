@@ -23,9 +23,9 @@ export default () => {
 	const router = useRouter();
 	const classes = useStyles();
 
-	const { data } = useUserSearch();
+	const { data, loading } = useUserSearch();
 
-	if (data && data.edges.length > 0) {
+	if (!loading && data && data.edges.length > 0) {
 		const { edges } = data;
 		return (
 			<Layout>
@@ -45,6 +45,25 @@ export default () => {
 							);
 						})}
 
+						<Waypoint />
+					</Grid>
+				</Grid>
+			</Layout>
+		);
+	}
+
+	if (!loading && data && data.edges.length === 0) {
+		return (
+			<Layout>
+				<Grid container className={classes.container}>
+					<Grid container spacing={2} direction="column">
+						<Grid item>
+							<Typography variant="h5">Search result for "{router.query?.username}"</Typography>
+						</Grid>
+
+						<Grid item>
+							<Typography variant="subtitle1">No Users found!</Typography>
+						</Grid>
 						<Waypoint />
 					</Grid>
 				</Grid>

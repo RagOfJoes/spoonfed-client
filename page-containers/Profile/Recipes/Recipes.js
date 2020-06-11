@@ -7,6 +7,7 @@ import RecipesLoading from './Recipes.loading';
 import RecipeCard from 'Components/RecipeCard';
 import { useMutation } from '@apollo/react-hooks';
 import { handleAuthError } from 'graphql/handlers';
+import Typography from '@material-ui/core/Typography';
 import { UNAUTHENTICATED_MSG } from 'constants/index';
 import { useProfile } from 'lib/Providers/ProfileProvider';
 import makeStyles from '@material-ui/core/styles/makeStyles';
@@ -16,6 +17,10 @@ const useStyles = makeStyles(
 	(theme) => ({
 		container: {
 			marginTop: theme.spacing(2),
+		},
+		image: {
+			width: '100%',
+			maxWidth: 500,
 		},
 	}),
 	{ name: 'ProfileRecipes' }
@@ -42,10 +47,11 @@ export default memo(() => {
 		},
 	});
 
-	if (!loading && data) {
+	if (!loading && data && data?.edges.length > 0) {
+		const { edges } = data;
 		return (
 			<Grid item container spacing={2} className={classes.container}>
-				{data?.edges.map((edge) => {
+				{edges.map((edge) => {
 					const {
 						id,
 						slug,
@@ -94,6 +100,28 @@ export default memo(() => {
 				})}
 
 				<Waypoint />
+			</Grid>
+		);
+	}
+
+	if (!loading && data && data?.edges.length === 0) {
+		return (
+			<Grid
+				item
+				container
+				spacing={3}
+				justify="center"
+				direction="column"
+				alignItems="center"
+				className={classes.container}
+			>
+				<Grid item>
+					<Typography variant="h6">No Recipes yet!</Typography>
+				</Grid>
+
+				<Grid item container justify="center">
+					<img alt="Invalid Recipe" title="Invalid Recipe" src="/images/NoData.svg" className={classes.image} />
+				</Grid>
 			</Grid>
 		);
 	}
