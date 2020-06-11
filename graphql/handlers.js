@@ -29,7 +29,12 @@ export const isAuthError = (error) => {
  * @param {Function} enqueueSnackbar
  * @param {Object} options
  */
-export const handleAuthError = async (error, onError, enqueueSnackbar, { disableRedirect = false } = {}) => {
+export const handleAuthError = async (
+	error,
+	onError,
+	enqueueSnackbar,
+	{ disableRedirect = false, message = 'Something went wrong, Try again later!' } = {}
+) => {
 	if (!error) return;
 
 	if (!enqueueSnackbar || typeof enqueueSnackbar !== 'function') {
@@ -47,12 +52,10 @@ export const handleAuthError = async (error, onError, enqueueSnackbar, { disable
 			return;
 		}
 
-		enqueueSnackbar('Something went wrong, Try again later!', {
+		enqueueSnackbar(message, {
 			variant: 'error',
 		});
-	} catch (e) {
-		console.log(`GraphQL Error Handler Error: ${e}`);
-	}
+	} catch (e) {}
 
 	!disableRedirect && redirect({}, '/');
 };
