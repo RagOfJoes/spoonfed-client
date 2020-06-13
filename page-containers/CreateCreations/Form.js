@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import redirect from 'lib/redirect';
 import Layout from 'Components/Layout';
 import { useSnackbar } from 'notistack';
@@ -36,6 +37,10 @@ export default () => {
 
 	return (
 		<Layout>
+			<Head>
+				<title>New Creation | Spoonfed</title>
+				<meta key="title" property="og:title" content="New Creation | Spoonfed" />
+			</Head>
 			<Grid container direction="column" className={classes.container}>
 				<CreationsForm
 					mutation={newRecipeMutation}

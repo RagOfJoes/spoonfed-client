@@ -1,4 +1,5 @@
 import Form from './Form';
+import Head from 'next/head';
 import { memo } from 'react';
 import { useUser } from 'lib/user';
 import Layout from 'Components/Layout';
@@ -27,6 +28,10 @@ export default memo(() => {
 
 	return (
 		<Layout>
+			<Head>
+				<title>New Creation | Spoonfed</title>
+				<meta key="title" property="og:title" content="New Creation | Spoonfed" />
+			</Head>
 			<Grid spacing={2} container direction="column" className={classes.loading}>
 				<CreationsFormLoading />
 			</Grid>

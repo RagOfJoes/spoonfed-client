@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { memo } from 'react';
 import { useUser } from 'lib/user';
 import RecipeForm from './RecipeForm';
@@ -27,6 +28,10 @@ export default memo(() => {
 
 	return (
 		<Layout>
+			<Head>
+				<title>Create a Recipe | Spoonfed</title>
+				<meta key="title" property="og:title" content="Create a Recipe | Spoonfed" />
+			</Head>
 			<Grid container spacing={1} wrap="nowrap" direction="column" className={classes.loading}>
 				<RecipeFormLoading />;
 			</Grid>

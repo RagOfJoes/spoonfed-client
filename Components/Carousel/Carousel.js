@@ -44,23 +44,17 @@ export default memo(({ title, images, disableDots, carouselProps }) => {
 
 	return (
 		<>
-			<Carousel value={slide} slidesPerScroll={1} onChange={(v) => setSlide(v)} {...carouselProps}>
+			<Carousel value={slide} onChange={(v) => setSlide(v)} {...carouselProps}>
 				{images.map((i) => {
 					return (
-						<LazyLoad
-							once
+						<CardMedia
 							key={i.name}
-							debounce={600}
-							placeholder={<Skeleton variant="rect" width="100%" height="40vw" style={{ maxHeight: 800 }} />}
-						>
-							<CardMedia
-								image={i.url}
-								alt={title || i.name}
-								title={title || i.name}
-								className={classes.image}
-								classes={{ root: classes.imageRoot }}
-							/>
-						</LazyLoad>
+							image={i.url}
+							alt={title || i.name}
+							title={title || i.name}
+							className={classes.image}
+							classes={{ root: classes.imageRoot }}
+						/>
 					);
 				})}
 			</Carousel>

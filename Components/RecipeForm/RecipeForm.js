@@ -53,7 +53,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 					if (typeof onSubmitting === 'function') await onSubmitting();
 
 					if (files.length === 0) return actions.setFieldError('images', 'Must provide atleast one image!');
-					
+
 					// Clean Images
 					const cleanedImages = await handleImageUpload(
 						files,
@@ -109,7 +109,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 									<Typography variant="h6">Start from scratch</Typography>
 								</Grid>
 
-								{errors && Object.keys(errors).length > 0 && (
+								{errors && touched && Object.keys(errors).length > 0 && Object.keys(touched).length > 0 && (
 									<Grid item>
 										<Box padding={1.5} bgcolor="error.main" borderRadius={4}>
 											<Typography variant="subtitle1">
