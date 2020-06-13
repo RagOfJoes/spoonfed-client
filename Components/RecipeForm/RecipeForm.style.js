@@ -16,6 +16,7 @@ const recipeFormStyle = (theme) => ({
 	},
 	dropzone: {
 		marginTop: theme.spacing(2),
+		color: theme.palette.grey[500],
 		marginBottom: theme.spacing(1),
 	},
 	time: {

@@ -8,9 +8,10 @@ import { makeStyles } from '@material-ui/core';
 import TextFormField from 'views/TextFormField';
 import { useMutation } from '@apollo/react-hooks';
 import LargeDropzone from 'Components/LargeDropzone';
+import { formatCreations } from 'lib/formatFileName';
+import Typography from '@material-ui/core/Typography';
 import React, { memo, useState, useEffect } from 'react';
 import { SignS3MultipleMutation } from 'graphql/Mutations';
-import { formatCreations } from 'lib/formatFileName';
 
 const init = {
 	title: '',
@@ -26,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down('xs')]: {
 			padding: theme.spacing(2),
 		},
+	},
+	helperText: {
+		color: theme.palette.grey[500],
 	},
 }));
 
@@ -58,6 +62,8 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 
 				try {
 					if (typeof onSubmitting === 'function') await onSubmitting();
+
+					if (files.length === 0) return actions.setFieldError('images', 'Must provide atleast one image!');
 
 					// Clean Images
 					const cleanedImages = await handleImageUpload(
@@ -109,6 +115,9 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 									setFiles(images);
 								}}
 							/>
+							<Typography variant="caption" className={classes.helperText}>
+								* Requires atleast one image
+							</Typography>
 						</Grid>
 						<Grid item>
 							<Field

@@ -2,6 +2,7 @@ import Time from './Time';
 import Tabs from './Tabs';
 import Import from './Import';
 import FieldArray from './FieldArray';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import profaneScan from 'lib/profaneScan';
 import { init, schema } from './constants';
@@ -17,7 +18,6 @@ import Typography from '@material-ui/core/Typography';
 import { useRecipeFormStyle } from './RecipeForm.style';
 import React, { memo, useState, useEffect } from 'react';
 import { SignS3MultipleMutation } from 'graphql/Mutations';
-import { Box } from '@material-ui/core';
 
 /**
  * TODO: Make initialValue for Editing Event's date to be restricted only to Creation Date of the Event
@@ -52,6 +52,8 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 				try {
 					if (typeof onSubmitting === 'function') await onSubmitting();
 
+					if (files.length === 0) return actions.setFieldError('images', 'Must provide atleast one image!');
+					
 					// Clean Images
 					const cleanedImages = await handleImageUpload(
 						files,
@@ -179,6 +181,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 													setFiles(images);
 												}}
 											/>
+											<Typography variant="caption">* Requires atleast one image</Typography>
 										</Grid>
 
 										<Time time={values.time} />

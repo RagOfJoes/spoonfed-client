@@ -13,7 +13,6 @@ export default () => {
 
 	useEffect(() => {
 		try {
-			console.log(errors, touched);
 			if (errors.time && touched.time && !touched.time.total) setFieldTouched('time.total', true, false);
 		} catch (e) {}
 	}, [errors, touched]);

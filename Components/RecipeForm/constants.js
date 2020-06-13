@@ -25,6 +25,7 @@ export const timeRegExp = new RegExp(
 export const schema = yup.object().shape({
 	name: yup.string().required('You must name the recipe').max(60, 'Cannot exceed 60 letters!'),
 	importUrl: yup.string(),
+	images: yup.array(),
 	servings: yup.string().required('You must provide the amount of serving'),
 	ingredients: yup
 		.array()
