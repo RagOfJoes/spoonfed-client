@@ -23,6 +23,7 @@ export default ({ children }) => {
 	return (
 		<>
 			<Head>
+				<title>Spoonfed</title>
 				<meta key="title" property="og:title" content="Spoonfed" />
 				<meta key="image" property="og:image" content="/images/favicon-64.png" />
 				<meta

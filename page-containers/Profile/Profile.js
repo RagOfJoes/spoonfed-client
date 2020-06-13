@@ -36,6 +36,21 @@ export default memo(() => {
 					<title>
 						{profile.data?.name?.full} ({profile.data?.username}) | Spoonfed
 					</title>
+					<meta
+						name="description"
+						content={
+							profile.data?.bio ||
+							'Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others.'
+						}
+					/>
+					<meta
+						key="description"
+						name="og:description"
+						content={
+							profile.data?.bio ||
+							'Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others.'
+						}
+					/>
 					<meta key="title" property="og:title" content={`${profile.data?.username}'s Profile`} />
 					<meta key="image" property="og:image" content={profile.data?.avatar || '/images/favicon-64.png'} />
 				</Head>
