@@ -3,7 +3,6 @@ import auth from 'lib/initAuth';
 import { MeQuery } from 'graphql/Queries';
 import Header from 'Components/Header/Header';
 import Settings from 'page-containers/Settings';
-import { GetServerSidePropsContext } from 'next';
 import MeProvider from 'lib/Providers/MeProvider';
 import { initializeApollo } from 'lib/apolloClient';
 import { UserProvider, useFetchUser } from 'lib/user';

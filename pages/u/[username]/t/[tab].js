@@ -1,7 +1,6 @@
 import { ApolloClient } from 'apollo-client';
 import Header from 'Components/Header/Header';
 import Profile from 'page-containers/Profile';
-import { GetServerSidePropsContext } from 'next';
 import MeProvider from 'lib/Providers/MeProvider';
 import { initializeApollo } from 'lib/apolloClient';
 import { UserProvider, useFetchUser } from 'lib/user';
