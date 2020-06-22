@@ -56,7 +56,7 @@ export default memo(({ as, href, slug, title, image: { name, url } }) => {
 	return (
 		<Link shallow scroll={false} href={href || `/?creationSlug=${slug}`} as={as || `/c/${slug}`}>
 			<Box className={styles.main} minHeight={300} position={'relative'}>
-				<LazyLoad once height={300} debounce={300} placeholder={<Skeleton variant="rect" width="100%" height={300} />}>
+				<LazyLoad height={300} debounce placeholder={<Skeleton variant="rect" width="100%" height={300} />}>
 					<CardMedia alt={title} image={url} classes={mediaStyles} />
 				</LazyLoad>
 				<div className={styles.content}>
