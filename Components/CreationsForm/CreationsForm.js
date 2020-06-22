@@ -1,6 +1,7 @@
 import { schema } from './constants';
 import Grid from '@material-ui/core/Grid';
 import profaneScan from 'lib/profaneScan';
+import RecipeFinder from './RecipeFinder';
 import { Formik, Form, Field } from 'formik';
 import { handleImageUpload } from './helpers';
 import Button from '@material-ui/core/Button';
@@ -20,28 +21,32 @@ const init = {
 	description: '',
 };
 
-const useStyles = makeStyles((theme) => ({
-	content: {
-		padding: theme.spacing(3, 4),
+const useStyles = makeStyles(
+	(theme) => ({
+		content: {
+			padding: theme.spacing(3, 4),
 
-		[theme.breakpoints.down('xs')]: {
-			padding: theme.spacing(2),
+			[theme.breakpoints.down('xs')]: {
+				padding: theme.spacing(2),
+			},
 		},
-	},
-	helperText: {
-		color: theme.palette.grey[500],
-	},
-}));
+		helperText: {
+			color: theme.palette.grey[500],
+		},
+	}),
+	{ name: 'CreationsForm' }
+);
 
 /**
  * TODO: Make initialValue for Editing Event's date to be restricted only to Creation Date of the Event
  */
-export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, initialValues = init }) => {
+export default memo(({ edit = false, Header, mutation, onError, onSubmitted, onSubmitting, initialValues = init }) => {
 	const classes = useStyles();
 
 	const [progress, setProgress] = useState([]);
 	const [uploadSize, setUploadSize] = useState(0);
 	const [isMounted, toggleMounted] = useState(false);
+	const [recipeDialogOpen, toggleRecipeDialog] = useState(false);
 	const [files, setFiles] = useState(() => (initialValues?.images?.length > 0 ? initialValues.images : []));
 
 	const [signS3Mutation] = useMutation(SignS3MultipleMutation);
@@ -95,7 +100,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 				actions.setSubmitting(false);
 			}}
 		>
-			{({ isSubmitting }) => (
+			{({ setFieldValue, setFieldError, isSubmitting }) => (
 				<Grid container wrap="nowrap" spacing={3} direction="column" className={classes.content}>
 					{Header}
 
@@ -125,6 +130,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 								name="title"
 								margin="dense"
 								variant="filled"
+								autoComplete="off"
 								component={TextFormField}
 								validate={(value) => {
 									if (profaneScan.profane(value)) {
@@ -137,7 +143,20 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 						</Grid>
 
 						<Grid item>
-							<Field name="recipe" label="Recipe" margin="dense" variant="filled" component={TextFormField} />
+							<Field
+								disabled
+								name="recipe"
+								label="Recipe"
+								margin="dense"
+								variant="filled"
+								component={TextFormField}
+							/>
+						</Grid>
+
+						<Grid item>
+							<Button color="primary" disabled={edit} onClick={() => toggleRecipeDialog(true)}>
+								Find Recipe
+							</Button>
 						</Grid>
 
 						<Grid item xs={12}>
@@ -157,6 +176,28 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 							</Button>
 						</Grid>
 					</Grid>
+
+					{!edit && (
+						<RecipeFinder
+							open={recipeDialogOpen}
+							toggleOpen={toggleRecipeDialog}
+							onRecipeSelect={(r) => {
+								try {
+									setFieldError('recipe', '');
+
+									const { slug } = r;
+									setFieldValue('recipe', new URL(`/${slug}`, window.location.href));
+									toggleRecipeDialog(false);
+									return;
+								} catch (e) {
+									console.log(e);
+								}
+
+								setFieldError('recipe', 'Invalid Recipe Provided');
+								toggleRecipeDialog(false);
+							}}
+						/>
+					)}
 				</Grid>
 			)}
 		</Formik>
