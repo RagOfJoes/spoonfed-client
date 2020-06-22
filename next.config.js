@@ -1,7 +1,8 @@
 process.env.NODE_ENV !== 'production' && require('dotenv/config');
 
 module.exports = {
-	target: 'serverless',
+  compress: true,
+	target: 'server',
 	exportTrailingSlash: true,
 	env: {
 		ISSUER: process.env.ISSUER,
