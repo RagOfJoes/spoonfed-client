@@ -57,8 +57,8 @@ export default () => {
 	const onClose = () =>
 		!hasError &&
 		router.push(
-			{ pathname: '/u/[username]', query: { username: router?.query?.username } },
-			`/u/${router?.query?.username}`,
+			{ pathname: '/u/[username]/t/[tab]', query: { username: router?.query?.username, tab: 'recipes' } },
+			`/u/${router?.query?.username}/t/recipes`,
 			{
 				scroll: false,
 				shallow: true,

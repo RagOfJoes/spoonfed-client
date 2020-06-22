@@ -48,13 +48,19 @@ export default memo(({ name, avatar, username, onLike, isLiked }) => {
 	const styles = useStyles();
 	return (
 		<Grid container wrap="nowrap" alignItems="center" className={styles.info}>
-			<Link as={`/u/${username}`} href={{ query: { username }, pathname: '/u/[username]' }}>
+			<Link
+				as={`/u/${username}/t/creations`}
+				href={{ query: { username, tab: 'creations' }, pathname: '/u/[username]/t/[tab]' }}
+			>
 				<Grid item>
 					<Avatar src={avatar} alt={`${name}'s Avatar`} className={styles.avatar} />
 				</Grid>
 			</Link>
 
-			<Link as={`/u/${username}`} href={{ query: { username }, pathname: '/u/[username]' }}>
+			<Link
+				as={`/u/${username}/t/creations`}
+				href={{ query: { username, tab: 'creations' }, pathname: '/u/[username]/t/[tab]' }}
+			>
 				<Grid item container direction="column" className={styles.infoText}>
 					<Grid item>
 						<Typography noWrap className={styles.infoTitle} variant="h6">

@@ -57,8 +57,8 @@ export default memo(() => {
 				<Grid container direction="row" justify="center" className={classes.container}>
 					<User />
 					<Tabs />
-					{router.route === '/u/[username]' && <Recipes />}
-					{router.route === '/u/[username]/creations' && <Creations />}
+					{router.query?.tab === 'recipes' && <Recipes />}
+					{router.query?.tab === 'creations' && <Creations />}
 				</Grid>
 				<RecipeDetail />
 				<CreationDetail />

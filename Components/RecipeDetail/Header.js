@@ -98,7 +98,11 @@ export default memo(
 				</Grid>
 				<Grid item container spacing={2} alignItems="center">
 					<Grid item>
-						<Link as={`/u/${username}`} href={{ query: { username }, pathname: '/u/[username]' }}>
+						<Link
+							shallow
+							as={`/u/${username}/t/recipes`}
+							href={{ query: { username, tab: 'recipes' }, pathname: '/u/[username]/t/[tab]' }}
+						>
 							<Chip
 								clickable
 								size="small"

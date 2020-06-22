@@ -83,7 +83,7 @@ export default () => {
 	const { profile } = useProfile();
 
 	const getClassName = (value) => {
-		if (value === router.route) return classes.tabSelected;
+		if (value === router.query?.tab) return classes.tabSelected;
 
 		return classes.tab;
 	};
@@ -91,16 +91,20 @@ export default () => {
 	const { username } = profile.data;
 	return (
 		<Grid container wrap="nowrap" disableGutters justify="center" className={classes.tabs} component={Toolbar}>
-			<Link shallow as={`/u/${username}`} href={{ query: { username }, pathname: '/u/[username]' }}>
-				<Grid item className={getClassName(`/u/[username]`)}>
+			<Link shallow as={`/u/${username}/t/recipes`} href={{ query: { username, tab: 'recipes' }, pathname: '/u/[username]/t/[tab]' }}>
+				<Grid item className={getClassName(`recipes`)}>
 					<Typography variant="subtitle1" className={classes.tabText}>
 						Recipes
 					</Typography>
 				</Grid>
 			</Link>
 
-			<Link shallow as={`/u/${username}/creations`} href={{ query: { username }, pathname: '/u/[username]/creations' }}>
-				<Grid item className={getClassName(`/u/[username]/creations`)}>
+			<Link
+				shallow
+				as={`/u/${username}/t/creations`}
+				href={{ query: { username, tab: 'creations' }, pathname: '/u/[username]/t/[tab]' }}
+			>
+				<Grid item className={getClassName(`creations`)}>
 					<Typography variant="subtitle1" className={classes.tabText}>
 						Creations
 					</Typography>
