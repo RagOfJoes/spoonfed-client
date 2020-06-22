@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import auth from 'lib/initAuth';
+import { NextSeo } from 'next-seo';
 import { MeQuery } from 'graphql/Queries';
 import Header from 'Components/Header/Header';
 import Settings from 'page-containers/Settings';
@@ -11,19 +11,14 @@ const Index = () => {
 	const { user, loading } = useFetchUser();
 	return (
 		<>
-			<Head>
-				<title>Settings | Spoonfed</title>
-				<meta key="title" name="og:title" content="Settings | Spoonfed" />
-				<meta
-					name="description"
-					content="Join Spoonfed today to perfect your cooking skills and inspire others to do so!"
-				/>
-				<meta
-					key="description"
-					name="og:description"
-					content="Join Spoonfed today to perfect your cooking skills and inspire others to do so!"
-				/>
-			</Head>
+			<NextSeo
+				noindex={true}
+				title="Settings"
+				openGraph={{
+					title: 'Settings | Spoonfed',
+					url: 'https://www.spoonfed.dev/settings',
+				}}
+			/>
 			<UserProvider value={{ user, loading }}>
 				<MeProvider>
 					<Header />

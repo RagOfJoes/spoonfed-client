@@ -27,6 +27,8 @@ export const GetUserProfileQuery = gql`
 			username
 			name {
 				full
+				last
+				first
 			}
 		}
 	}

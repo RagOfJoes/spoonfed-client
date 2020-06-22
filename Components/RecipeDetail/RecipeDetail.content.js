@@ -1,8 +1,8 @@
 import Times from './Times';
 import Link from 'next/link';
-import Head from 'next/head';
 import { memo } from 'react';
 import Header from './Header';
+import { NextSeo } from 'next-seo';
 import { useUser } from 'lib/user';
 import { useRouter } from 'next/router';
 import Ingredients from './Ingredients';
@@ -73,11 +73,13 @@ export default memo((props) => {
 	const { id, name, time, images, onLike, isLiked, servings, importUrl, createdBy, ingredients, instructions } = props;
 	return (
 		<>
-			<Head>
-				<title>{name || 'Recipe Detail'} | Spoonfed</title>
-				<meta key="title" name="og:title" content={name || 'Recipe Detail'} />
-				<meta key="image" name="og:image" content={images[0].url || '/images/favicon-64.png'} />
-			</Head>
+			<NextSeo
+				title={name || 'Recipe Detail '}
+				openGraph={{
+					title: `${name || 'Recipe Detail'} | Spoonfed`,
+					images: [{ alt: name || 'Recipe', url: images[0].url || '/images/favicon-64.png' }],
+				}}
+			/>
 			<Grid container direction="column" alignItems="center" className={classes.container}>
 				<Grid item xs={12} style={{ width: '100%', position: 'relative' }}>
 					<Carousel

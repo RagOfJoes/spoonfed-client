@@ -1,12 +1,13 @@
-import Head from 'next/head';
 import cookie from 'js-cookie';
 import { parse } from 'cookie';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import { DefaultSeo } from 'next-seo';
 import 'public/stylesheets/reset.css';
 import { SnackbarProvider } from 'notistack';
 import 'react-image-crop/dist/ReactCrop.css';
 import { useApollo } from 'lib/apolloClient';
+import defaultSeoProps from 'next-seo.config';
 import React, { useEffect, memo } from 'react';
 import '@brainhubeu/react-carousel/lib/style.css';
 import AppProvider from 'lib/Providers/AppProvider';
@@ -38,20 +39,7 @@ const App = memo(({ Component, theme, pageProps }) => {
 
 	return (
 		<>
-			<Head>
-				<title>Spoonfed</title>
-				<meta key="title" name="og:title" content="Spoonfed" />
-				<meta key="image" name="og:image" content="/images/favicon-64.png" />
-				<meta
-					name="description"
-					content="Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others."
-				/>
-				<meta
-					key="description"
-					name="og:description"
-					content="Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others."
-				/>
-			</Head>
+			<DefaultSeo {...defaultSeoProps} />
 			<ApolloProvider client={apolloClient}>
 				<ThemeProvider initialTheme={theme}>
 					<SnackbarProvider preventDuplicate>
