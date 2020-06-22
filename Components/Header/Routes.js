@@ -90,7 +90,7 @@ export default () => {
 	return (
 		<Grid container wrap="nowrap" justify="space-between" className={classes.tabs} component={Toolbar}>
 			<Grid item container>
-				<Link shallow href="/recipes">
+				<Link shallow href={{ pathname: '/recipes', query: {} }}>
 					<Grid item className={getClassName('/recipes')}>
 						<Typography variant="subtitle1" className={classes.tabText}>
 							Recipes
@@ -98,7 +98,7 @@ export default () => {
 					</Grid>
 				</Link>
 
-				<Link shallow href="/creations">
+				<Link shallow href={{ pathname: '/creations', query: {} }}>
 					<Grid item className={getClassName('/creations')}>
 						<Typography variant="subtitle1" className={classes.tabText}>
 							Creations
