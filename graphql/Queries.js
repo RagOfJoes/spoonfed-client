@@ -4,6 +4,7 @@ import {
 	RecipeDetailFragment,
 	CreationOverviewFragment,
 	CreationDetailFragment,
+	RecipesForCreationsFragment,
 } from 'graphql/Fragments';
 
 export const MeQuery = gql`
@@ -19,7 +20,7 @@ export const MeQuery = gql`
 
 export const GetUserProfileQuery = gql`
 	query GetUserProfileQuery($username: String!) {
-		getProfile(username: $username) @connection(key: "Profile", filter: ["username"]) {
+		getProfile(username: $username) {
 			sub
 			bio
 			avatar
@@ -86,6 +87,21 @@ export const GetAllRecipesQuery = gql`
 		}
 	}
 	${RecipeOverviewFragment}
+`;
+
+export const GetRecipesForCreationsQuery = gql`
+	query GetRecipesForCreationsQuery($limit: Int!, $cursor: ID, $filters: [RecipesFilterInput], $sort: CursorSortInput!) {
+		getAllRecipes(limit: $limit, cursor: $cursor, filters: $filters, sort: $sort) @connection(key: "RecipesForCreations") {
+			pageInfo {
+				cursor
+				hasNextPage
+			}
+			edges {
+				...RecipeForCreations
+			}
+		}
+	}
+	${RecipesForCreationsFragment}
 `;
 
 export const GetRecipeDetail = gql`

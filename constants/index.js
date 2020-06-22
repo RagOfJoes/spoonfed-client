@@ -6,7 +6,7 @@ export const FILTERS = [
 ];
 
 export const DEFAULT_RECIPES_VARIABLE = {
-	limit: 6,
+	limit: 12,
 	filters: [],
 	sort: {
 		creation: 'DESC',
