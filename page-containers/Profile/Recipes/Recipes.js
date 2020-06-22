@@ -73,7 +73,7 @@ export default memo(() => {
 								isLiked={isLiked}
 								servings={servings}
 								createdBy={createdBy}
-								href={`/u/[username]?username=${username}&recipeSlug=${slug}`}
+								href={`/u/[username]/t/[tab]?username=${username}&tab=recipes&recipeSlug=${slug}`}
 								onLike={async () => {
 									if (!user) {
 										enqueueSnackbar(UNAUTHENTICATED_MSG, {

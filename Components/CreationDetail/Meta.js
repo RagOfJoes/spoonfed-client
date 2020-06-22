@@ -84,7 +84,11 @@ export default memo(({ title, avatar, isLiked, onLike, description, username, na
 
 			<Grid container spacing={1} alignItems="center" className={styles.chip}>
 				<Grid item>
-					<Link shallow as={`/u/${username}`} href={{ query: { username }, pathname: '/u/[username]' }}>
+					<Link
+						shallow
+						as={`/u/${username}/t/creations`}
+						href={{ query: { username, tab: 'creations' }, pathname: '/u/[username]/t/[tab]' }}
+					>
 						<Chip
 							clickable
 							size="small"

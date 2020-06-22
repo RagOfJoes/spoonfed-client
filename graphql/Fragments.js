@@ -48,6 +48,27 @@ export const RecipeOverviewFragment = gql`
 	}
 `;
 
+export const RecipesForCreationsFragment = gql`
+	fragment RecipeForCreations on Recipe {
+		id
+		name
+		slug
+
+		images {
+			url
+			name
+		}
+
+		createdBy {
+			sub
+			username
+			name {
+				full
+			}
+		}
+	}
+`;
+
 export const RecipeDetailFragment = gql`
 	fragment RecipeDetail on Recipe {
 		id

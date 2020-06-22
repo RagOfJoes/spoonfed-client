@@ -45,7 +45,7 @@ export default memo(
 			<Card elevation={0} className={`${classes.container} ${shadow.root}`}>
 				<Link shallow scroll={false} href={href || `/?recipeSlug=${slug}`} as={as || `/r/${slug}`}>
 					<CardActionArea className={classes.imageBtn}>
-						<LazyLoad once debounce height={250} placeholder={<Skeleton variant="rect" width="100%" height={250} />}>
+						<LazyLoad debounce height={250} placeholder={<Skeleton variant="rect" width="100%" height={250} />}>
 							<CardMedia alt={name} title={name} image={images[0].url} className={classes.image} />
 						</LazyLoad>
 					</CardActionArea>
@@ -68,7 +68,11 @@ export default memo(
 				<CardActions className={classes.actions}>
 					<Grid container spacing={1} alignItems="center">
 						<Grid item>
-							<Link shallow href={{ pathname: '/u/[username]', query: { username } }} as={`/u/${username}`}>
+							<Link
+								shallow
+								as={`/u/${username}/t/recipes`}
+								href={{ pathname: '/u/[username]/t/[tab]', query: { username, tab: 'recipes' } }}
+							>
 								<Chip
 									clickable
 									size="small"

@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { memo } from 'react';
 import Waypoint from './Waypoint';
 import { useUser } from 'lib/user';
@@ -8,12 +7,12 @@ import Grid from '@material-ui/core/Grid';
 import CreationCard from 'views/CreationCard';
 import CreationDetail from './CreationDetail';
 import { useMutation } from '@apollo/react-hooks';
+import CreationsLoading from './Creations.loading';
 import { handleAuthError } from 'graphql/handlers';
 import { UNAUTHENTICATED_MSG } from 'constants/index';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { useAllCreations } from 'lib/Providers/AllCreationsProvider';
 import { LikeCreationMutation, UnlikeCreationMutation } from 'graphql/Mutations';
-import CreationsLoading from './Creations.loading';
 
 const useStyles = makeStyles(
 	({ spacing }) => ({
@@ -46,16 +45,6 @@ export default memo(() => {
 	if (data && !loading) {
 		return (
 			<Layout>
-				<Head>
-					<title>Creations | Spoonfed</title>
-					<meta key="title" property="og:title" content="Creations" />
-					<meta name="description" content="Find the perfect inspiration for your next Creation!" />
-					<meta
-						key="description"
-						name="og:description"
-						content="Find the perfect inspiration for your next Creation!"
-					/>
-				</Head>
 				<Grid container spacing={2} direction="row" className={classes.container}>
 					{data?.edges.map((creation) => {
 						const {

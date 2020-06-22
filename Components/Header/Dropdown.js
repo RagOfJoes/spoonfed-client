@@ -98,8 +98,8 @@ export default ({ name, anchorEl, onClose }) => {
 						{me?.username && (
 							<Link
 								shallow
-								as={`/u/${me.username}`}
-								href={{ pathname: '/u/[username]', query: { username: me.username } }}
+								as={`/u/${me.username}/t/recipes`}
+								href={{ pathname: '/u/[username]/t/[tab]', query: { username: me.username, tab: 'recipes' } }}
 							>
 								<ListItem button>
 									<ListItemIcon className={classes.icon}>

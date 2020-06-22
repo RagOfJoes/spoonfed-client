@@ -64,7 +64,11 @@ export default ({ avatar, name, username }) => {
 				</Typography>
 			</Grid>
 
-			<Link shallow as={`/u/${username}`} href={{ pathname: '/u/[username]', query: { username } }}>
+			<Link
+				shallow
+				as={`/u/${username}/t/recipes`}
+				href={{ pathname: '/u/[username]/t/[tab]', query: { username, tab: 'recipes' } }}
+			>
 				<div style={{ top: 0, right: 0, position: 'absolute' }}>
 					<Tooltip title={'See profile'}>
 						<IconButton>

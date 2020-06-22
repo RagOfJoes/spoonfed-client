@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import Portal from '@material-ui/core/Portal';
 import Backdrop from '@material-ui/core/Backdrop';
 import SpeedDial from '@material-ui/lab/SpeedDial';
@@ -29,6 +30,7 @@ const useStyles = makeStyles(
 );
 
 export default () => {
+	const router = useRouter();
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 
@@ -58,7 +60,7 @@ export default () => {
 					tooltipOpen
 					onClick={handleClose}
 					icon={<AddToPhotosIcon />}
-					FabProps={{ href: '/c/create' }}
+					onClick={() => router.push({ pathname: '/c/create' }, '/c/create', { shallow: true, passHref: true })}
 					tooltipTitle={
 						<Typography noWrap variant="subtitle2">
 							New Creation
@@ -69,7 +71,7 @@ export default () => {
 					tooltipOpen
 					onClick={handleClose}
 					icon={<PostAddIcon />}
-					FabProps={{ href: '/r/create' }}
+					onClick={() => router.push({ pathname: '/r/create' }, '/r/create', { shallow: true, passHref: true })}
 					tooltipTitle={
 						<Typography noWrap variant="subtitle2">
 							New Recipe

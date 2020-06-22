@@ -1,15 +1,9 @@
-import { useUser } from 'lib/user';
 import { useRouter } from 'next/router';
-import { useSnackbar } from 'notistack';
 import { useState, useEffect } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import { useMutation } from '@apollo/react-hooks';
-import { UNAUTHENTICATED_MSG } from 'constants/index';
+import { isAuthError } from 'graphql/handlers';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { handleAuthError, isAuthError } from 'graphql/handlers';
-import { useAllRecipes } from 'lib/Providers/AllRecipesProvider';
 import CreationDetail from 'Components/CreationDetail/CreationDetail';
-import { LikeRecipeMutation, UnlikeRecipeMutation } from 'graphql/Mutations';
 
 const useStyles = makeStyles(
 	(theme) => ({
@@ -26,19 +20,16 @@ const useStyles = makeStyles(
 );
 
 export default () => {
-	const { user } = useUser();
 	const router = useRouter();
 	const classes = useStyles();
-	const { sort } = useAllRecipes();
-	const { enqueueSnackbar } = useSnackbar();
 	const [hasError, toggleError] = useState(false);
 
 	useEffect(() => () => toggleError(false), []);
 	const onClose = () =>
 		!hasError &&
 		router.push(
-			{ pathname: '/u/[username]/creations', query: { username: router.query.username } },
-			`/u/${router.query.username}/creations`,
+			{ pathname: '/u/[username]/t/[tab]', query: { username: router.query.username, tab: 'creations' } },
+			`/u/${router.query.username}/t/creations`,
 			{
 				scroll: false,
 				shallow: true,

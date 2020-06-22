@@ -1,17 +1,20 @@
 import Head from 'next/head';
+import auth from 'lib/initAuth';
 import Layout from 'Components/Layout';
 import { useSnackbar } from 'notistack';
 import Grid from '@material-ui/core/Grid';
-import { withApollo } from 'lib/withApollo';
+import { ApolloClient } from 'apollo-client';
 import Header from 'Components/Header/Header';
 import MeProvider from 'lib/Providers/MeProvider';
 import { useMutation } from '@apollo/react-hooks';
 import { handleAuthError } from 'graphql/handlers';
+import { initializeApollo } from 'lib/apolloClient';
 import { UNAUTHENTICATED_MSG } from 'constants/index';
 import { UserProvider, useFetchUser } from 'lib/user';
+import { GetCreationDetailQuery } from 'graphql/Queries';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { LikeRecipeMutation, UnlikeRecipeMutation } from 'graphql/Mutations';
 import CreationDetail from 'Components/CreationDetail/CreationDetail';
+import { LikeRecipeMutation, UnlikeRecipeMutation } from 'graphql/Mutations';
 
 const useStyles = makeStyles(
 	(theme) => ({
@@ -80,4 +83,43 @@ const Index = () => {
 	);
 };
 
-export default withApollo({ ssr: true })(Index);
+/**
+ *
+ * @param {GetServerSidePropsContext} ctx
+ */
+export async function getServerSideProps({ req, query }) {
+	/**
+	 * @type {ApolloClient}
+	 */
+	const apolloClient = initializeApollo();
+
+	try {
+		const session = await auth.getSession(req);
+
+		const context =
+			session && session?.accessToken
+				? {
+						headers: {
+							authorization: `Bearer ${session?.accessToken}`,
+						},
+				  }
+				: {};
+
+		await apolloClient.query({
+			context,
+			skip: !query.creationSlug,
+			query: GetCreationDetailQuery,
+			variables: {
+				slug: query?.creationSlug,
+			},
+		});
+	} catch (e) {}
+
+	return {
+		props: {
+			initialApolloState: apolloClient.cache.extract(),
+		},
+	};
+}
+
+export default Index;

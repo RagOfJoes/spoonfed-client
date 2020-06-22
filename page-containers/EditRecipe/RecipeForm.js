@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { useUser } from 'lib/user';
 import { useSnackbar } from 'notistack';
 import Grid from '@material-ui/core/Grid';
@@ -12,13 +11,21 @@ import { handleAuthError, isAuthError } from 'graphql/handlers';
 import RecipeFormLoading from 'Components/RecipeForm/RecipeForm.loading';
 
 const useStyles = makeStyles(
-	({}) => ({
+	({ spacing, breakpoints }) => ({
 		container: {
 			overflow: 'hidden',
 		},
 		image: {
 			width: '100%',
 			maxWidth: 500,
+		},
+		loading: {
+			overflow: 'hidden',
+			padding: spacing(3, 4),
+
+			[breakpoints.down('xs')]: {
+				padding: spacing(2),
+			},
 		},
 	}),
 	{ name: 'RecipeEditForm' }
@@ -39,56 +46,50 @@ export default () => {
 		if (user?.sub !== createdBy?.sub) return <NotAuthorized />;
 
 		return (
-			<>
-				<Head>
-					<title>Edit {name || 'Recipe'}</title>
-					<meta key="title" property="og:title" content={`Edit ${name || Recipe}`} />
-				</Head>
-				<Grid container direction="column" className={classes.container}>
-					<RecipeForm
-						initialValues={data.getRecipeDetail}
-						Header={
-							<Grid item container alignItems="center">
-								<Grid item>
-									<Typography variant="h5">Edit recipe</Typography>
-								</Grid>
+			<Grid container direction="column" className={classes.container}>
+				<RecipeForm
+					initialValues={data.getRecipeDetail}
+					Header={
+						<Grid item container alignItems="center">
+							<Grid item>
+								<Typography variant="h5">Edit recipe</Typography>
 							</Grid>
+						</Grid>
+					}
+					onError={async (e) => {
+						if (isAuthError(e)) {
+							await handleAuthError(e, null, enqueueSnackbar);
+							return;
 						}
-						onError={async (e) => {
-							if (isAuthError(e)) {
-								await handleAuthError(e, null, enqueueSnackbar);
-								return;
-							}
 
-							enqueueSnackbar('Something went wrong while editing Recipe. Try again later.', {
-								variant: 'error',
-							});
-						}}
-						mutation={async (v) => {
-							const allowedFields = ['name', 'servings', 'time', 'ingredients', 'instructions', 'images'];
-							const { recipe } = v.variables;
+						enqueueSnackbar('Something went wrong while editing Recipe. Try again later.', {
+							variant: 'error',
+						});
+					}}
+					mutation={async (v) => {
+						const allowedFields = ['name', 'servings', 'time', 'ingredients', 'instructions', 'images'];
+						const { recipe } = v.variables;
 
-							const inputVar = {};
-							allowedFields.map((field) => (inputVar[field] = recipe[field]));
-							if (inputVar.time) delete inputVar.time;
+						const inputVar = {};
+						allowedFields.map((field) => (inputVar[field] = recipe[field]));
+						if (inputVar.time) delete inputVar.time;
 
-							await editRecipe({
-								variables: {
-									id,
-									recipe: inputVar,
-								},
-							});
-						}}
-					/>
-				</Grid>
-			</>
+						await editRecipe({
+							variables: {
+								id,
+								recipe: inputVar,
+							},
+						});
+					}}
+				/>
+			</Grid>
 		);
 	}
 
 	if (!error && !loading && !data.getRecipeDetail) return <RecipeFormError />;
 
 	return (
-		<Grid container spacing={1} direction="column" className={classes.container}>
+		<Grid container spacing={1} direction="column" className={classes.loading}>
 			<RecipeFormLoading />
 		</Grid>
 	);

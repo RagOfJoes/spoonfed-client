@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Waypoint from './Waypoint';
 import Layout from 'Components/Layout';
 import { useRouter } from 'next/router';
@@ -30,10 +29,6 @@ export default () => {
 		const { edges } = data;
 		return (
 			<Layout>
-				<Head>
-					<title>User Search | Spoonfed</title>
-					<meta key="title" property="og:title" content="User Search" />
-				</Head>
 				<Grid container className={classes.container}>
 					<Grid container spacing={2} direction="column">
 						<Grid item>
@@ -60,10 +55,6 @@ export default () => {
 	if (!loading && data && data.edges.length === 0) {
 		return (
 			<Layout>
-				<Head>
-					<title>User Search | Spoonfed</title>
-					<meta key="title" property="og:title" content="User Search" />
-				</Head>
 				<Grid container className={classes.container}>
 					<Grid container spacing={2} direction="column">
 						<Grid item>
