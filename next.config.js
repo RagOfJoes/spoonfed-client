@@ -2,6 +2,7 @@ process.env.NODE_ENV !== 'production' && require('dotenv/config');
 
 module.exports = {
 	target: 'serverless',
+	exportTrailingSlash: true,
 	env: {
 		ISSUER: process.env.ISSUER,
 		CLIENT_ID: process.env.CLIENT_ID,
