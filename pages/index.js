@@ -10,8 +10,8 @@ const Index = () => {
 		<>
 			<Head>
 				<title>Welcome | Spoonfed</title>
-				<meta key="title" property="og:title" content="Welcome | Spoonfed" />
-				<meta key="image" property="og:image" content="/images/ogImage.png" />
+				<meta key="title" name="og:title" content="Welcome | Spoonfed" />
+				<meta key="image" name="og:image" content="/images/ogImage.png" />
 				<meta
 					name="description"
 					content="Join Spoonfed today to perfect your cooking skills and inspire others to do so!"

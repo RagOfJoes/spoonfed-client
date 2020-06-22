@@ -9,9 +9,9 @@ export default class MyDocument extends Document {
 				<Head>
 					{/* Use minimum-scale=1 to enable GPU rasterization */}
 					<meta name="theme-color" content="#424242" />
-					<meta property="og:type" content="website" />
-					<meta property="og:site_name" content="Spoonfed" />
-					<meta property="og:url" content="https://spoonfed.dev" />
+					<meta name="og:type" content="website" />
+					<meta name="og:site_name" content="Spoonfed" />
+					<meta name="og:url" content="https://www.spoonfed.dev/" />
 
 					<meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
 					<meta name="author" content="Victor Ragojos - https://github.com/RagOfJoes" />

@@ -15,7 +15,7 @@ const Index = () => {
 		<>
 			<Head>
 				<title>Edit Recipe | Spoonfed</title>
-				<meta key="title" property="og:title" content="Edit Recipe | Spoonfed" />
+				<meta key="title" name="og:title" content="Edit Recipe | Spoonfed" />
 				<meta
 					name="description"
 					content="Join Spoonfed today to perfect your cooking skills and inspire others to do so!"

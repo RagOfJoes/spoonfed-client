@@ -40,8 +40,8 @@ const App = memo(({ Component, theme, pageProps }) => {
 		<>
 			<Head>
 				<title>Spoonfed</title>
-				<meta key="title" property="og:title" content="Spoonfed" />
-				<meta key="image" property="og:image" content="/images/favicon-64.png" />
+				<meta key="title" name="og:title" content="Spoonfed" />
+				<meta key="image" name="og:image" content="/images/favicon-64.png" />
 				<meta
 					name="description"
 					content="Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others."

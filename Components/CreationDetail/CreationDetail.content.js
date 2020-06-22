@@ -75,8 +75,8 @@ export default memo((props) => {
 		<>
 			<Head>
 				<title>{title || 'Creation Detail'} | Spoonfed</title>
-				<meta key="title" property="og:title" content={title || 'Creation Detail'} />
-				<meta key="image" property="og:image" content={images[0].url || '/images/favicon-64.png'} />
+				<meta key="title" name="og:title" content={title || 'Creation Detail'} />
+				<meta key="image" name="og:image" content={images[0].url || '/images/favicon-64.png'} />
 			</Head>
 			<Grid container direction="column" alignItems="center" className={classes.container}>
 				<Media title={title} images={images} createdBy={createdBy} />
