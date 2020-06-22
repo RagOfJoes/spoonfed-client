@@ -1,7 +1,7 @@
 import Meta from './Meta';
-import Head from 'next/head';
-import { memo } from 'react';
 import Media from './Media';
+import { memo } from 'react';
+import { NextSeo } from 'next-seo';
 import { useUser } from 'lib/user';
 import { useSnackbar } from 'notistack';
 import Grid from '@material-ui/core/Grid';
@@ -73,11 +73,13 @@ export default memo((props) => {
 	};
 	return (
 		<>
-			<Head>
-				<title>{title || 'Creation Detail'} | Spoonfed</title>
-				<meta key="title" name="og:title" content={title || 'Creation Detail'} />
-				<meta key="image" name="og:image" content={images[0].url || '/images/favicon-64.png'} />
-			</Head>
+			<NextSeo
+				title={title || 'Creation Detail '}
+				openGraph={{
+					title: `${title || 'Creation Detail'} | Spoonfed`,
+					images: [{ alt: title || 'Creation', url: images[0].url || '/images/favicon-64.png' }],
+				}}
+			/>
 			<Grid container direction="column" alignItems="center" className={classes.container}>
 				<Media title={title} images={images} createdBy={createdBy} />
 				<Meta {...createdBy} title={title} recipe={recipe} description={description} onLike={onLike} isLiked={isLiked} />

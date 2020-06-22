@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import Header from 'Components/Header/Header';
 import Welcome from 'page-containers/Welcome';
 import MeProvider from 'lib/Providers/MeProvider';
@@ -8,20 +8,14 @@ const Index = () => {
 	const { user, loading } = useFetchUser();
 	return (
 		<>
-			<Head>
-				<title>Welcome | Spoonfed</title>
-				<meta key="title" name="og:title" content="Welcome | Spoonfed" />
-				<meta key="image" name="og:image" content="/images/ogImage.png" />
-				<meta
-					name="description"
-					content="Join Spoonfed today to perfect your cooking skills and inspire others to do so!"
-				/>
-				<meta
-					key="description"
-					name="og:description"
-					content="Join Spoonfed today to perfect your cooking skills and inspire others to do so!"
-				/>
-			</Head>
+			<NextSeo
+				title="Welcome"
+				description="Sign-up and join Spoonfed today to find the perfect Recipe and share your delicious Creations!"
+				openGraph={{
+					title: 'Welcome | Spoonfed',
+					images: [{ alt: 'Welcome to Spoonfed', url: '/images/ogImage.png' }],
+				}}
+			/>
 			<UserProvider value={{ user, loading }}>
 				<MeProvider>
 					<Header />

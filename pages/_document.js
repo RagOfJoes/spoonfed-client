@@ -1,21 +1,18 @@
 import React from 'react';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
 	render() {
 		return (
-			<html lang="en">
+			<Html lang="en">
 				<Head>
 					{/* Use minimum-scale=1 to enable GPU rasterization */}
 					<meta name="theme-color" content="#424242" />
-					<meta name="og:type" content="website" />
-					<meta name="og:site_name" content="Spoonfed" />
-					<meta name="og:url" content="https://www.spoonfed.dev/" />
 
 					<meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
 					<meta name="author" content="Victor Ragojos - https://github.com/RagOfJoes" />
-					<meta name="keywords" content="Spoonfed, NextJS, Recipe, GraphQL, Food, Creation, Social" />
+					<meta name="keywords" content="Spoonfed, RagOfJoes, NextJS, Recipe, GraphQL, Food, Creations, Social" />
 					<meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
 					<link rel="shortcut icon" href="/images/favicon.ico" />
 					<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180.png" />
@@ -34,7 +31,7 @@ export default class MyDocument extends Document {
 					<Main />
 					<NextScript />
 				</body>
-			</html>
+			</Html>
 		);
 	}
 }

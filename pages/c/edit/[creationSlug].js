@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import auth from 'lib/initAuth';
+import { NextSeo } from 'next-seo';
 import { ApolloClient } from 'apollo-client';
 import Header from 'Components/Header/Header';
 import MeProvider from 'lib/Providers/MeProvider';
@@ -13,19 +13,7 @@ const Index = () => {
 
 	return (
 		<>
-			<Head>
-				<title>Edit Creation | Spoonfed</title>
-				<meta key="title" name="og:title" content="Edit Creation | Spoonfed" />
-				<meta
-					name="description"
-					content="Join Spoonfed today to perfect your cooking skills and inspire others to do so!"
-				/>
-				<meta
-					key="description"
-					name="og:description"
-					content="Join Spoonfed today to perfect your cooking skills and inspire others to do so!"
-				/>
-			</Head>
+			<NextSeo title="Edit Creation" openGraph={{ title: 'Edit Creation | Spoonfed' }} />
 			<UserProvider value={{ user, loading }}>
 				<MeProvider>
 					<Header />

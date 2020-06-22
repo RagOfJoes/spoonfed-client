@@ -1,8 +1,8 @@
 import User from './User';
 import Tabs from './Tabs';
-import Head from 'next/head';
 import { memo } from 'react';
 import Recipes from './Recipes';
+import { NextSeo } from 'next-seo';
 import Creations from './Creations';
 import Layout from 'Components/Layout';
 import { useRouter } from 'next/router';
@@ -31,38 +31,46 @@ export default memo(() => {
 
 	if (!profile.loading && profile.data && (!recipes.loading || !creations.loading)) {
 		return (
-			<Layout>
-				<Head>
-					<title>
-						{profile.data?.name?.full} ({profile.data?.username}) | Spoonfed
-					</title>
-					<meta
-						name="description"
-						content={
+			<>
+				<NextSeo
+					title={`${profile.data?.name?.full} (${router.query?.username})`}
+					description={
+						profile.data?.bio ||
+						'Join Spoonfed today to find the perfect Recipe and to share all your delicious Creations!'
+					}
+					openGraph={{
+						type: 'Profile',
+						url: `https://www.spoonfed.dev/u/${router.query?.username}/t/${router.query?.tab}`,
+						title: `${router.query?.tab && router.query.tab[0].toUpperCase() + router.query.tab.slice(1)} | ${
+							profile.data?.name?.full
+						} (${router.query?.username})`,
+						description:
 							profile.data?.bio ||
-							'Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others.'
-						}
-					/>
-					<meta
-						key="description"
-						name="og:description"
-						content={
-							profile.data?.bio ||
-							'Store all your favorite recipes and perfect your cooking by tracking your progress. Take notes on area of improvements and share with others.'
-						}
-					/>
-					<meta key="title" name="og:title" content={`${profile.data?.username}'s Profile`} />
-					<meta key="image" name="og:image" content={profile.data?.avatar || '/images/favicon-64.png'} />
-				</Head>
-				<Grid container direction="row" justify="center" className={classes.container}>
-					<User />
-					<Tabs />
-					{router.query?.tab === 'recipes' && <Recipes />}
-					{router.query?.tab === 'creations' && <Creations />}
-				</Grid>
-				<RecipeDetail />
-				<CreationDetail />
-			</Layout>
+							'Join Spoonfed today to find the perfect Recipe and to share all your delicious Creations!',
+						profile: {
+							username: router.query?.username,
+							lastName: profile.data?.name?.last,
+							firstName: profile.data?.name?.first,
+						},
+						images: [
+							{
+								alt: profile.data?.name?.full || 'Profile',
+								url: profile.data?.avatar || '/images/favicon-64.png',
+							},
+						],
+					}}
+				/>
+				<Layout>
+					<Grid container direction="row" justify="center" className={classes.container}>
+						<User />
+						<Tabs />
+						{router.query?.tab === 'recipes' && <Recipes />}
+						{router.query?.tab === 'creations' && <Creations />}
+					</Grid>
+					<RecipeDetail />
+					<CreationDetail />
+				</Layout>
+			</>
 		);
 	}
 

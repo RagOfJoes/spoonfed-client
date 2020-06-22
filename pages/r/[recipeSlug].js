@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import auth from 'lib/initAuth';
 import Layout from 'Components/Layout';
 import { useSnackbar } from 'notistack';
@@ -45,10 +44,6 @@ const Index = () => {
 	return (
 		<UserProvider value={{ user, loading }}>
 			<MeProvider>
-				<Head>
-					<title>Recipe Detail | Spoonfed</title>
-				</Head>
-
 				<Header />
 				<Layout>
 					<Grid container direction="column" className={classes.container}>
