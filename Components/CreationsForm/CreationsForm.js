@@ -121,7 +121,7 @@ export default memo(({ edit = false, Header, mutation, onError, onSubmitted, onS
 								}}
 							/>
 							<Typography variant="caption" className={classes.helperText}>
-								* Requires atleast one image
+								* Requires at least one image
 							</Typography>
 						</Grid>
 						<Grid item>
@@ -186,7 +186,7 @@ export default memo(({ edit = false, Header, mutation, onError, onSubmitted, onS
 									setFieldError('recipe', '');
 
 									const { slug } = r;
-									setFieldValue('recipe', new URL(`/${slug}`, window.location.href));
+									setFieldValue('recipe', new URL(`/r/${slug}`, window.location.href));
 									toggleRecipeDialog(false);
 									return;
 								} catch (e) {

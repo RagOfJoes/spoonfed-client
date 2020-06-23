@@ -181,7 +181,7 @@ export default memo(({ Header, mutation, onError, onSubmitted, onSubmitting, ini
 													setFiles(images);
 												}}
 											/>
-											<Typography variant="caption">* Requires atleast one image</Typography>
+											<Typography variant="caption">* Requires at least one image</Typography>
 										</Grid>
 
 										<Time time={values.time} />
