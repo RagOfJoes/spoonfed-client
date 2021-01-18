@@ -3,7 +3,7 @@ process.env.NODE_ENV !== 'production' && require('dotenv/config');
 module.exports = {
   compress: true,
 	target: 'server',
-	exportTrailingSlash: true,
+	trailingSlash: true,
 	env: {
 		ISSUER: process.env.ISSUER,
 		CLIENT_ID: process.env.CLIENT_ID,

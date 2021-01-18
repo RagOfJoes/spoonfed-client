@@ -1,46 +1,53 @@
-import { useQuery } from '@apollo/react-hooks';
-import { DEFAULT_RECIPES_VARIABLE } from 'constants/index';
-import { GetRecipesForCreationsQuery } from 'graphql/Queries';
-import { useMemo, useState, useContext, createContext } from 'react';
+import { useQuery } from "@apollo/client";
+import { DEFAULT_RECIPES_VARIABLE } from "constants/index";
+import { GetRecipesForCreationsQuery } from "graphql/Queries";
+import { useMemo, useState, useContext, createContext } from "react";
 
 const RecipeFinderContext = createContext({
-	data: {},
-	error: false,
-	loading: false,
-	fetchMore: () => {},
+  data: {},
+  error: false,
+  loading: false,
+  fetchMore: () => {},
 
-	fetching: false,
-	toggleFetching: () => {},
+  fetching: false,
+  toggleFetching: () => {},
 
-	manipulating: false,
-	toggleManipulating: () => {},
+  manipulating: false,
+  toggleManipulating: () => {},
 });
 
 export default ({ children }) => {
-	const [fetching, toggleFetching] = useState(false);
-	const [manipulating, toggleManipulating] = useState(false);
+  const [fetching, toggleFetching] = useState(false);
+  const [manipulating, toggleManipulating] = useState(false);
 
-	const { data, error, loading, fetchMore } = useQuery(GetRecipesForCreationsQuery, {
-		variables: DEFAULT_RECIPES_VARIABLE,
-	});
+  const { data, error, loading, fetchMore } = useQuery(
+    GetRecipesForCreationsQuery,
+    {
+      variables: DEFAULT_RECIPES_VARIABLE,
+    }
+  );
 
-	const value = useMemo(
-		() => ({
-			error,
-			loading,
-			fetchMore,
-			data: data && data?.getAllRecipes,
+  const value = useMemo(
+    () => ({
+      error,
+      loading,
+      fetchMore,
+      data: data && data?.getAllRecipes,
 
-			fetching,
-			toggleFetching,
+      fetching,
+      toggleFetching,
 
-			manipulating,
-			toggleManipulating,
-		}),
-		[data, loading, fetching, manipulating]
-	);
+      manipulating,
+      toggleManipulating,
+    }),
+    [data, loading, fetching, manipulating]
+  );
 
-	return <RecipeFinderContext.Provider value={value}>{children}</RecipeFinderContext.Provider>;
+  return (
+    <RecipeFinderContext.Provider value={value}>
+      {children}
+    </RecipeFinderContext.Provider>
+  );
 };
 
 export const useRecipeFinder = () => useContext(RecipeFinderContext);

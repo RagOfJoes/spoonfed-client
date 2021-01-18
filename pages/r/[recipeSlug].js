@@ -2,16 +2,15 @@ import auth from 'lib/initAuth';
 import Layout from 'Components/Layout';
 import { useSnackbar } from 'notistack';
 import Grid from '@material-ui/core/Grid';
-import { ApolloClient } from 'apollo-client';
 import Header from 'Components/Header/Header';
 import MeProvider from 'lib/Providers/MeProvider';
-import { useMutation } from '@apollo/react-hooks';
 import { GetRecipeDetail } from 'graphql/Queries';
 import { handleAuthError } from 'graphql/handlers';
 import RecipeDetail from 'Components/RecipeDetail';
 import { initializeApollo } from 'lib/apolloClient';
 import { UNAUTHENTICATED_MSG } from 'constants/index';
 import { UserProvider, useFetchUser } from 'lib/user';
+import { useMutation,ApolloClient } from "@apollo/client";
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { LikeRecipeMutation, UnlikeRecipeMutation } from 'graphql/Mutations';
 

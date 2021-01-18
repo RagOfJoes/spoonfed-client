@@ -1,158 +1,158 @@
-import gql from 'graphql-tag';
+import { gql } from "@apollo/client";
 
 export const ParsedRecipeFragment = gql`
-	fragment ParsedRecipeFragment on ParsedRecipe {
-		name
-		image
-		servings
-		time {
-			prep
-			cook
-			ready
-			active
-			inactive
-			total
-		}
+  fragment ParsedRecipeFragment on ParsedRecipe {
+    name
+    image
+    servings
+    time {
+      prep
+      cook
+      ready
+      active
+      inactive
+      total
+    }
 
-		ingredients
-		instructions
-	}
+    ingredients
+    instructions
+  }
 `;
 
 export const RecipeOverviewFragment = gql`
-	fragment RecipeOverview on Recipe {
-		id
-		name
-		slug
-		isLiked
-		servings
-		time {
-			total
-		}
-		images {
-			name
-			url
-		}
-		createdBy {
-			sub
-			avatar
-			username
+  fragment RecipeOverview on Recipe {
+    id
+    name
+    slug
+    isLiked
+    servings
+    time {
+      total
+    }
+    images {
+      name
+      url
+    }
+    createdBy {
+      sub
+      avatar
+      username
 
-			name {
-				full
-			}
-		}
-		date {
-			creation
-		}
-	}
+      name {
+        full
+      }
+    }
+    date {
+      creation
+    }
+  }
 `;
 
 export const RecipesForCreationsFragment = gql`
-	fragment RecipeForCreations on Recipe {
-		id
-		name
-		slug
+  fragment RecipeForCreations on Recipe {
+    id
+    name
+    slug
 
-		images {
-			url
-			name
-		}
+    images {
+      url
+      name
+    }
 
-		createdBy {
-			sub
-			username
-			name {
-				full
-			}
-		}
-	}
+    createdBy {
+      sub
+      username
+      name {
+        full
+      }
+    }
+  }
 `;
 
 export const RecipeDetailFragment = gql`
-	fragment RecipeDetail on Recipe {
-		id
-		name
-		slug
-		isLiked
-		servings
-		importUrl
-		ingredients
-		instructions
-		images {
-			url
-			name
-		}
-		createdBy {
-			sub
-			avatar
-			username
-			name {
-				full
-			}
-		}
-		date {
-			creation
-			lastUpdate
-		}
-		time {
-			prep
-			cook
-			ready
-			total
-			active
-			inactive
-		}
-	}
+  fragment RecipeDetail on Recipe {
+    id
+    name
+    slug
+    isLiked
+    servings
+    importUrl
+    ingredients
+    instructions
+    images {
+      url
+      name
+    }
+    createdBy {
+      sub
+      avatar
+      username
+      name {
+        full
+      }
+    }
+    date {
+      creation
+      lastUpdate
+    }
+    time {
+      prep
+      cook
+      ready
+      total
+      active
+      inactive
+    }
+  }
 `;
 
 export const CreationOverviewFragment = gql`
-	fragment CreationOverview on Creation {
-		id
-		slug
-		title
-		isLiked
-		images {
-			url
-			name
-		}
+  fragment CreationOverview on Creation {
+    id
+    slug
+    title
+    isLiked
+    images {
+      url
+      name
+    }
 
-		createdBy {
-			sub
-			avatar
-			username
-			name {
-				full
-			}
-		}
-	}
+    createdBy {
+      sub
+      avatar
+      username
+      name {
+        full
+      }
+    }
+  }
 `;
 
 export const CreationDetailFragment = gql`
-	fragment CreationDetail on Creation {
-		id
-		slug
-		title
-		isLiked
-		description
-		images {
-			url
-			name
-		}
+  fragment CreationDetail on Creation {
+    id
+    slug
+    title
+    isLiked
+    description
+    images {
+      url
+      name
+    }
 
-		recipe {
-			id
-			name
-			slug
-		}
+    recipe {
+      id
+      name
+      slug
+    }
 
-		createdBy {
-			sub
-			avatar
-			username
-			name {
-				full
-			}
-		}
-	}
+    createdBy {
+      sub
+      avatar
+      username
+      name {
+        full
+      }
+    }
+  }
 `;

@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from "@apollo/client";
 import { RecipeOverviewFragment, RecipeDetailFragment, ParsedRecipeFragment, CreationDetailFragment } from './Fragments';
 
 export const SignS3SingleMutation = gql`
