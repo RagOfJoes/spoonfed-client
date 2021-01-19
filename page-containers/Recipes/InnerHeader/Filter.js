@@ -36,7 +36,7 @@ const useStyles = makeStyles(
 	{ name: 'RecipeFilterPopover' }
 );
 
-export default ({ open, onClear, toggleOpen }) => {
+const Filter = ({ open, onClear, toggleOpen }) => {
 	const classes = useStyles();
 	const { enqueueSnackbar } = useSnackbar();
 
@@ -76,3 +76,5 @@ export default ({ open, onClear, toggleOpen }) => {
 		</Dialog>
 	);
 };
+
+export default Filter;

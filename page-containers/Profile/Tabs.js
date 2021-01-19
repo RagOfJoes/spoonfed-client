@@ -77,7 +77,7 @@ const useStyles = makeStyles(
 	{ name: 'ProfileTabs' }
 );
 
-export default () => {
+const Tabs = () => {
 	const router = useRouter();
 	const classes = useStyles();
 	const { profile } = useProfile();
@@ -113,3 +113,5 @@ export default () => {
 		</Grid>
 	);
 };
+
+export default Tabs;

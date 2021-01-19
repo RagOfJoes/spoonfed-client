@@ -62,7 +62,7 @@ const useStyles = makeStyles(
 	{ name: 'ExpandableSearch' }
 );
 
-export default ({ value, onChange }) => {
+const ExpandableSearch = ({ value, onChange }) => {
 	const classes = useStyles();
 	const inputRef = React.useRef(null);
 
@@ -86,3 +86,5 @@ export default ({ value, onChange }) => {
 		</div>
 	);
 };
+
+export default ExpandableSearch;

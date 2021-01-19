@@ -17,7 +17,7 @@ const useStyles = makeStyles(
 	{ name: 'NotAuthorized' }
 );
 
-export default () => {
+const NotAuthorized = () => {
 	const classes = useStyles();
 	return (
 		<Grid container spacing={3} direction="column" justify="center" alignItems="center" className={classes.container}>
@@ -36,3 +36,5 @@ export default () => {
 		</Grid>
 	);
 };
+
+export default NotAuthorized;

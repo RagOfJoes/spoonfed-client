@@ -37,7 +37,7 @@ const useStyles = makeStyles(
 	{ name: 'RecipeSortPopover' }
 );
 
-export default ({ anchorEl, setAnchorEl }) => {
+const Sort = ({ anchorEl, setAnchorEl }) => {
 	const classes = useStyles();
 	const { enqueueSnackbar } = useSnackbar();
 
@@ -141,3 +141,5 @@ export default ({ anchorEl, setAnchorEl }) => {
 		</Popover>
 	);
 };
+
+export default Sort;

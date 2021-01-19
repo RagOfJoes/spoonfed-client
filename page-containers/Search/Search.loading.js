@@ -15,7 +15,7 @@ const useStyles = makeStyles(
 	{ name: 'UserSearchPage' }
 );
 
-export default () => {
+const SearchLoading = () => {
 	const router = useRouter();
 	const classes = useStyles();
 	return (
@@ -56,3 +56,5 @@ export default () => {
 		</Grid>
 	);
 };
+
+export default SearchLoading;

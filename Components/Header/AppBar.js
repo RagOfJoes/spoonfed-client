@@ -8,7 +8,7 @@ import { useAppBarStyle } from './AppBar.style';
 import { Typography, Avatar } from '@material-ui/core';
 import LocalDiningIcon from '@material-ui/icons/LocalDining';
 
-export default () => {
+const AppBarComponent = () => {
 	const classes = useAppBarStyle();
 	return (
 		<AppBar elevation={0} variant="outlined" color="default" position="fixed" className={classes.appbar}>
@@ -38,3 +38,5 @@ export default () => {
 		</AppBar>
 	);
 };
+
+export default AppBarComponent;

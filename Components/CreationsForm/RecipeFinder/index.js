@@ -1,10 +1,12 @@
 import RecipeFinder from './RecipeFinder';
 import RecipeFinderProvider from './Provider';
 
-export default (props) => {
+const Index = props => {
 	return (
 		<RecipeFinderProvider>
 			<RecipeFinder {...props} />
 		</RecipeFinderProvider>
 	);
 };
+
+export default Index;

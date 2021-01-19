@@ -10,7 +10,7 @@ import AppBarIconsLoading from './AppBarIcons.loading';
 import { useAppBarIconsStyle } from './AppBarIcons.style';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-export default () => {
+const AppBarIcons = () => {
 	const { me } = useMe();
 	const { user, loading } = useUser();
 	const classes = useAppBarIconsStyle();
@@ -66,3 +66,5 @@ export default () => {
 
 	return <AppBarIconsLoading />;
 };
+
+export default AppBarIcons;

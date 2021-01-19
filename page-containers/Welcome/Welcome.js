@@ -60,7 +60,7 @@ const useStyles = makeStyles(
 	{ name: 'WelcomePage' }
 );
 
-export default () => {
+const Welcome = () => {
 	const classes = useStyles();
 	const { theme } = useThemeType();
 	const { user } = useUser();
@@ -111,3 +111,5 @@ export default () => {
 		</Layout>
 	);
 };
+
+export default Welcome;

@@ -20,7 +20,7 @@ const useStyles = makeStyles(
 	{ name: 'SettingsLoading' }
 );
 
-export default () => {
+const SettingsUnauthenticated = () => {
 	const classes = useStyles();
 	return (
 		<Layout>
@@ -57,3 +57,5 @@ export default () => {
 		</Layout>
 	);
 };
+
+export default SettingsUnauthenticated;

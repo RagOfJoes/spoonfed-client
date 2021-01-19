@@ -7,7 +7,7 @@ import SettingsLoading from './Settings.loading';
 import { useMe } from 'lib/Providers/MeProvider';
 import Unauthenticated from 'Components/Unauthenticated';
 
-export default () => {
+const Settings = () => {
 	const { user, loading } = useUser();
 	const { enqueueSnackbar } = useSnackbar();
 	const { me, called, ...otherMe } = useMe();
@@ -33,3 +33,5 @@ export default () => {
 
 	return <SettingsLoading />;
 };
+
+export default Settings;

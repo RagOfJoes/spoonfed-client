@@ -1,10 +1,12 @@
 import Profile from './Profile';
 import ProfileProvider from 'lib/Providers/ProfileProvider';
 
-export default () => {
+const Index = () => {
 	return (
 		<ProfileProvider>
 			<Profile />
 		</ProfileProvider>
 	);
 };
+
+export default Index;

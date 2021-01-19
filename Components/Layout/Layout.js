@@ -17,7 +17,7 @@ const useStyles = makeStyles(
 	{ name: 'PageLayout' }
 );
 
-export default ({ children }) => {
+const Layout = ({ children }) => {
 	const classes = useStyles();
 	return (
 		<Container maxWidth="lg" className={classes.container}>
@@ -25,3 +25,5 @@ export default ({ children }) => {
 		</Container>
 	);
 };
+
+export default Layout;

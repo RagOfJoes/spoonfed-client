@@ -21,7 +21,7 @@ const useStyles = makeStyles(
   { name: "RecipeCreateForm" }
 );
 
-export default () => {
+const RecipeFormComponent = () => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -80,3 +80,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default RecipeFormComponent;

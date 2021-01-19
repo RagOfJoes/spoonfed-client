@@ -1,3 +1,5 @@
 import TextFormField from './TextFormField';
 
-export default ({ field, form, ...props }) => <TextFormField field={field} form={form} {...props} />;
+const Index = ({ field, form, ...props }) => <TextFormField field={field} form={form} {...props} />;
+
+export default Index;

@@ -1,3 +1,5 @@
 import DatePickerField from './DatePickerField';
 
-export default (props) => <DatePickerField {...props} />;
+const Index = props => <DatePickerField {...props} />;
+
+export default Index;

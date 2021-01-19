@@ -18,7 +18,7 @@ const useStyles = makeStyles(
 	{ name: 'CreationDetailError' }
 );
 
-export default () => {
+const CreationDetailError = () => {
 	const classes = useStyles();
 	return (
 		<Grid
@@ -40,3 +40,5 @@ export default () => {
 		</Grid>
 	);
 };
+
+export default CreationDetailError;

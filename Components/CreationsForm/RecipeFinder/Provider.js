@@ -16,7 +16,7 @@ const RecipeFinderContext = createContext({
   toggleManipulating: () => {},
 });
 
-export default ({ children }) => {
+const Provider = ({ children }) => {
   const [fetching, toggleFetching] = useState(false);
   const [manipulating, toggleManipulating] = useState(false);
 
@@ -49,5 +49,7 @@ export default ({ children }) => {
     </RecipeFinderContext.Provider>
   );
 };
+
+export default Provider;
 
 export const useRecipeFinder = () => useContext(RecipeFinderContext);

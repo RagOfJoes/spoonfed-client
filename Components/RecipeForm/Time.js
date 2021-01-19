@@ -7,7 +7,7 @@ import { Field, useFormikContext } from 'formik';
 import Typography from '@material-ui/core/Typography';
 import { useRecipeFormStyle } from './RecipeForm.style';
 
-export default () => {
+const Time = () => {
 	const classes = useRecipeFormStyle();
 	const { errors, touched, setFieldTouched } = useFormikContext();
 
@@ -51,3 +51,5 @@ export default () => {
 		</>
 	);
 };
+
+export default Time;

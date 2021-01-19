@@ -2,13 +2,15 @@ import moment from "moment";
 // import { DatePicker } from '@material-ui/pickers';
 import TextField from "@material-ui/core/TextField";
 
-export default ({
-  form,
-  field: { value, name },
-  TextFieldProps,
-  getShouldDisableDateError,
-  ...other
-}) => {
+const DatePickerField = (
+  {
+    form,
+    field: { value, name },
+    TextFieldProps,
+    getShouldDisableDateError,
+    ...other
+  }
+) => {
   const currentError = form.errors[name];
   const toShowError = Boolean(currentError && form.touched[name]);
   return <div>Placeholder</div>;
@@ -67,3 +69,5 @@ export default ({
   // 	/>
   // );
 };
+
+export default DatePickerField;

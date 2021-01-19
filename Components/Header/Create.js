@@ -29,7 +29,7 @@ const useStyles = makeStyles(
 	{ name: 'CreateSpeedDial' }
 );
 
-export default () => {
+const Create = () => {
 	const router = useRouter();
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
@@ -82,3 +82,5 @@ export default () => {
 		</Portal>
 	);
 };
+
+export default Create;

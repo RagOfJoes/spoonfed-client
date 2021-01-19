@@ -10,7 +10,7 @@ import TextFormField from 'views/TextFormField';
 import { Field, useFormikContext } from 'formik';
 import MenuItem from '@material-ui/core/MenuItem';
 
-export default ({ index, options, filterKey, onRemove, numOfActiveFilters }) => {
+const Filter = ({ index, options, filterKey, onRemove, numOfActiveFilters }) => {
 	const { setFieldValue } = useFormikContext();
 	const classes = useFilterStyle({ shouldDisplayRemove: numOfActiveFilters > 1 });
 
@@ -76,3 +76,5 @@ export default ({ index, options, filterKey, onRemove, numOfActiveFilters }) => 
 		</Grid>
 	);
 };
+
+export default Filter;

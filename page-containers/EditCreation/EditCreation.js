@@ -16,7 +16,7 @@ const useStyles = makeStyles(
 	{ name: 'EditCreationPage' }
 );
 
-export default () => {
+const EditCreation = () => {
 	const classes = useStyles();
 	const { user, loading } = useUser();
 
@@ -37,3 +37,5 @@ export default () => {
 		</Layout>
 	);
 };
+
+export default EditCreation;

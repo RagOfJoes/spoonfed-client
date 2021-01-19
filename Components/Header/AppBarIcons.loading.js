@@ -3,7 +3,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { useAppBarIconsStyle } from './AppBarIcons.style';
 
-export default () => {
+const AppBarIconsLoading = () => {
 	const classes = useAppBarIconsStyle();
 
 	return (
@@ -18,3 +18,5 @@ export default () => {
 		</Grid>
 	);
 };
+
+export default AppBarIconsLoading;

@@ -37,7 +37,7 @@ const useStyles = makeStyles(
 	{ name: 'CTACard' }
 );
 
-export default ({ bgColor, title, description, buttonText, onClickButton }) => {
+const CTACard = ({ bgColor, title, description, buttonText, onClickButton }) => {
 	const classes = useStyles({ bgColor });
 	return (
 		<Card elevation={0} className={classes.card}>
@@ -62,3 +62,5 @@ export default ({ bgColor, title, description, buttonText, onClickButton }) => {
 		</Card>
 	);
 };
+
+export default CTACard;

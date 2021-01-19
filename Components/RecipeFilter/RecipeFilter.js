@@ -2,7 +2,7 @@ import FilterForms from './Forms';
 import Grid from '@material-ui/core/Grid';
 import { Form, Formik, FieldArray } from 'formik';
 
-export default ({ filters, onClear, onSubmit }) => {
+const RecipeFilter = ({ filters, onClear, onSubmit }) => {
 	return (
 		<Formik
 			initialValues={{
@@ -49,3 +49,5 @@ export default ({ filters, onClear, onSubmit }) => {
 		</Formik>
 	);
 };
+
+export default RecipeFilter;

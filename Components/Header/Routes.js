@@ -75,7 +75,7 @@ const useStyles = makeStyles(
 	{ name: 'AppBarRoutes' }
 );
 
-export default () => {
+const Routes = () => {
 	const router = useRouter();
 	const { user } = useUser();
 	const classes = useStyles();
@@ -130,3 +130,5 @@ export default () => {
 		</Grid>
 	);
 };
+
+export default Routes;

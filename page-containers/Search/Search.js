@@ -19,7 +19,7 @@ const useStyles = makeStyles(
 	{ name: 'UserSearchPage' }
 );
 
-export default () => {
+const Search = () => {
 	const router = useRouter();
 	const classes = useStyles();
 
@@ -77,3 +77,5 @@ export default () => {
 		</Layout>
 	);
 };
+
+export default Search;

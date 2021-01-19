@@ -4,7 +4,7 @@ import { useFormikContext } from 'formik';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
-export default ({ push, remove, onClear }) => {
+const Forms = ({ push, remove, onClear }) => {
 	const { values, resetForm } = useFormikContext();
 	return (
 		<>
@@ -51,3 +51,5 @@ export default ({ push, remove, onClear }) => {
 		</>
 	);
 };
+
+export default Forms;

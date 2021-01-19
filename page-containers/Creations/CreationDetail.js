@@ -22,7 +22,7 @@ const useStyles = makeStyles(
 	{ name: 'CreationDetailDialog' }
 );
 
-export default () => {
+const CreationDetailComponent = () => {
 	const { user } = useUser();
 	const router = useRouter();
 	const classes = useStyles();
@@ -52,3 +52,5 @@ export default () => {
 		</Dialog>
 	);
 };
+
+export default CreationDetailComponent;

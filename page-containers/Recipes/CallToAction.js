@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default ({}) => {
+const CallToAction = ({}) => {
 	const router = useRouter();
 	const classes = useStyles();
 	const { user, loading } = useUser();
@@ -41,3 +41,5 @@ export default ({}) => {
 
 	return null;
 };
+
+export default CallToAction;

@@ -31,7 +31,7 @@ const useStyles = makeStyles(
 	{ name: 'RecipeEditForm' }
 );
 
-export default () => {
+const RecipeFormComponent = () => {
 	const { user } = useUser();
 	const classes = useStyles();
 	const { enqueueSnackbar } = useSnackbar();
@@ -94,3 +94,5 @@ export default () => {
 		</Grid>
 	);
 };
+
+export default RecipeFormComponent;

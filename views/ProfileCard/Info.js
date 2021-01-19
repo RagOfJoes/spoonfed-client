@@ -45,7 +45,7 @@ const useStyles = makeStyles(
 	{ name: 'ProfileCardInfo' }
 );
 
-export default ({ avatar, name, username }) => {
+const Info = ({ avatar, name, username }) => {
 	const classes = useStyles();
 	return (
 		<Grid container spacing={2} alignItems="center" className={classes.container}>
@@ -80,3 +80,5 @@ export default ({ avatar, name, username }) => {
 		</Grid>
 	);
 };
+
+export default Info;

@@ -1,10 +1,12 @@
 import Search from './Search';
 import UserSearchProvider from 'lib/Providers/UserSearchProvider';
 
-export default () => {
+const Index = () => {
 	return (
 		<UserSearchProvider>
 			<Search />
 		</UserSearchProvider>
 	);
 };
+
+export default Index;

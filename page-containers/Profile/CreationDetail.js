@@ -19,7 +19,7 @@ const useStyles = makeStyles(
 	{ name: 'CreationDetailDialog' }
 );
 
-export default () => {
+const CreationDetailComponent = () => {
 	const router = useRouter();
 	const classes = useStyles();
 	const [hasError, toggleError] = useState(false);
@@ -56,3 +56,5 @@ export default () => {
 		</Dialog>
 	);
 };
+
+export default CreationDetailComponent;

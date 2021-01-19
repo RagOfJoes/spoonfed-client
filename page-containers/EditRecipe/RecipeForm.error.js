@@ -18,7 +18,7 @@ const useStyles = makeStyles(
 	{ name: 'RecipeEditError' }
 );
 
-export default () => {
+const RecipeFormError = () => {
 	const classes = useStyles();
 
 	return (
@@ -41,3 +41,5 @@ export default () => {
 		</Grid>
 	);
 };
+
+export default RecipeFormError;

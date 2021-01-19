@@ -31,7 +31,7 @@ const useStyles = makeStyles(
 	{ name: 'CreationsEditForm' }
 );
 
-export default () => {
+const CreationForm = () => {
 	const { user } = useUser();
 	const classes = useStyles();
 	const { enqueueSnackbar } = useSnackbar();
@@ -96,3 +96,5 @@ export default () => {
 		</Grid>
 	);
 };
+
+export default CreationForm;

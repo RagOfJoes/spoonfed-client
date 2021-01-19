@@ -47,7 +47,7 @@ const useStyles = makeStyles(
   { name: "AppBarDropdown" }
 );
 
-export default ({ name, anchorEl, onClose }) => {
+const Dropdown = ({ name, anchorEl, onClose }) => {
   const { me } = useMe();
   const classes = useStyles();
   const open = Boolean(anchorEl);
@@ -182,3 +182,5 @@ export default ({ name, anchorEl, onClose }) => {
     </Popover>
   );
 };
+
+export default Dropdown;

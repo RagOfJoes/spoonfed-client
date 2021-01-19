@@ -16,7 +16,7 @@ const useStyles = makeStyles(
 	{ name: 'RecipeEditPage' }
 );
 
-export default () => {
+const EditRecipe = () => {
 	const classes = useStyles();
 	const { user, loading } = useUser();
 
@@ -37,3 +37,5 @@ export default () => {
 		</Layout>
 	);
 };
+
+export default EditRecipe;

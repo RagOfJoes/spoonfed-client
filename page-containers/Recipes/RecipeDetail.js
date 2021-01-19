@@ -24,7 +24,7 @@ const useStyles = makeStyles(
   { name: "RecipeDetailDialog" }
 );
 
-export default () => {
+const RecipeDetailComponent = () => {
   const { user } = useUser();
   const router = useRouter();
   const classes = useStyles();
@@ -104,3 +104,5 @@ export default () => {
     </Dialog>
   );
 };
+
+export default RecipeDetailComponent;
