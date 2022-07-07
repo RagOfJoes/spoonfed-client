@@ -46,7 +46,7 @@
 		"graphql": "^15.0.0",
 		"graphql-tag": "^2.10.3",
 		"js-cookie": "^2.2.1",
-		"moment": "^2.26.0",
+		"moment": "^2.29.4",
 		"next": "^9.4.4",
 		"next-seo": "^4.5.0",
 		"nextjs-oidc": "^1.1.0",
